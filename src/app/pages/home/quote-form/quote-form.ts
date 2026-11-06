@@ -25,6 +25,7 @@ import {
   todayIso,
   zipValidator,
 } from '../../../core/quote/quote.utils';
+import { AnalyticsService } from '../../../core/services/analytics.service';
 import { ContentService } from '../../../core/services/content.service';
 import { LanguageService } from '../../../core/services/language.service';
 import { QuoteIntentService } from '../../../core/services/quote-intent.service';
@@ -62,6 +63,7 @@ export class QuoteForm {
   protected readonly content = inject(ContentService);
   private readonly intent = inject(QuoteIntentService);
   private readonly sender = inject(QuoteSender);
+  private readonly analytics = inject(AnalyticsService);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
   private readonly injector = inject(Injector);
 
@@ -168,6 +170,7 @@ export class QuoteForm {
     this.sending.set(true);
     try {
       const { demo } = await this.sender.send(request);
+      if (!demo) this.analytics.event('quote-request', 'Quote request sent');
       this.showSuccess({ ...result, demo });
     } catch {
       this.sendError.set(true);

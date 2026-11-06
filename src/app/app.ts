@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LanguageService } from './core/services/language.service';
 import { SeoService } from './core/services/seo.service';
+import { AnalyticsService } from './core/services/analytics.service';
 import { BottomBar } from './layout/bottom-bar/bottom-bar';
 import { Footer } from './layout/footer/footer';
 import { Header } from './layout/header/header';
@@ -19,5 +20,6 @@ export class App {
 
   constructor() {
     inject(SeoService).init();
+    inject(AnalyticsService).init();
   }
 }

@@ -1,5 +1,6 @@
 import { Injectable, InjectionToken, inject } from '@angular/core';
 import { Lang } from '../models/content.models';
+import { ContentService } from '../services/content.service';
 
 /** What the form sends. */
 export interface QuoteRequest {
@@ -23,12 +24,12 @@ export interface QuoteResult {
 }
 
 /**
- * Where quote requests are POSTed as JSON (e.g. a Formspree or Netlify form
- * endpoint, chosen when publishing in card 24). null = demo mode: the form
- * works and confirms, but nothing leaves the browser.
+ * Where quote requests are POSTed as JSON: `integrations.quoteEndpoint` in
+ * src/content/site.json (e.g. a Formspree form URL). Empty = demo mode: the
+ * form works and confirms, but nothing leaves the browser.
  */
 export const QUOTE_ENDPOINT = new InjectionToken<string | null>('QUOTE_ENDPOINT', {
-  factory: () => null,
+  factory: () => inject(ContentService).integrations().quoteEndpoint || null,
 });
 
 @Injectable({ providedIn: 'root' })
