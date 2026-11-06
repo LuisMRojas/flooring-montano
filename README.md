@@ -9,7 +9,7 @@ Single-page, mobile-first website for **Montano Flooring LLC**, a (fictional) fa
 - [Angular 22](https://angular.dev) (standalone components, signals, zoneless)
 - SCSS, mobile-first (`min-width` media queries); breakpoints 768 / 1024 / 1200 / 1440 px
 - Self-hosted fonts: Montserrat (headings) and Inter (text)
-- English / Spanish switch (ngx-translate comes in a later step)
+- English / Spanish with [ngx-translate](https://github.com/ngx-translate/core): English by default, choice saved in the browser
 
 ## Run it
 
@@ -25,13 +25,14 @@ npm run build      # production build in dist/
 ```
 src/
   app/
-    core/data/site.data.ts     interface labels ({ en, es })
+    core/i18n/                 ngx-translate loader for the interface texts
     core/models/               content types (Product, Service, Faq, Testimonial...)
     core/services/             ContentService, LanguageService, ScrollSpyService
     layout/                    header, bottom bar (mobile), footer, legal dialog
     pages/home/                the single page with the 9 anchored sections
     shared/                    small reusable pieces (logo mark, appReveal)
   content/                     all texts and data (JSON), see "Editing content"
+  i18n/                        interface texts: en.json, es.json (menu, buttons, labels)
   styles/                      design tokens, CSS custom properties and motion
 public/
   brand/                       logo and icons
@@ -61,6 +62,15 @@ Every record in a list has `id`, `order` and `visible`:
 
 Buttons say where they go with `"target"` (a section id such as `"contact"`), and can preselect an option in the quote form with `"prefill"`. `npm test` checks that every text has both languages, ids are unique and every button points to a real section.
 
+## Languages
+
+There are two kinds of text, both in English and Spanish:
+
+- **Interface** (menu, buttons, screen-reader labels, footer): `src/i18n/en.json` and `src/i18n/es.json`, used in templates as `{{ 'actions.call' | translate }}`. Both files must have the same keys.
+- **Content** (products, services, FAQ, reviews…): `{ "en", "es" }` pairs in `src/content/`, shown with `i18n.t(...)`.
+
+`npm test` fails if a key is missing in one language, if a text is empty, or if any English interface text is still visible after switching to Spanish.
+
 ## Page sections
 
 `#home` · `#flooring` · `#services` · `#why-us` · `#gallery` · `#reviews` · `#about` · `#faq` · `#contact`
@@ -73,7 +83,7 @@ Work is planned on a Trello board, one card per step:
 
 - [x] 13. Project, header, menu and footer
 - [x] 14. Data model and data service
-- [ ] 15. EN/ES translation (ngx-translate)
+- [x] 15. EN/ES translation (ngx-translate)
 - [ ] 16. Reusable components
 - [ ] 17. Page sections
 - [ ] 18. Product / service detail panel
