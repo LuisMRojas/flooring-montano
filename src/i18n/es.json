@@ -15,7 +15,7 @@
     "call": "Llamar",
     "text": "Mensaje",
     "freeEstimate": "Estimado gratis",
-    "getFreeEstimate": "Pide tu presupuesto gratis",
+    "getFreeEstimate": "Pide tu estimado gratis",
     "close": "Cerrar",
     "scroll": "Desliza"
   },
@@ -46,7 +46,7 @@
     "timeAny": "Cualquier horario",
     "timeMorning": "Mañana (8–12)",
     "timeAfternoon": "Tarde (12–4)",
-    "timeLate": "Última hora (4–6)",
+    "timeLate": "Final de la tarde (4–6)",
     "comments": "Comentarios",
     "commentsPlaceholder": "Ambientes, piso actual, lo que debamos saber",
     "submit": "Enviar mi solicitud",

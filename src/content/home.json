@@ -18,11 +18,11 @@
       "width": 576,
       "height": 768
     },
-    "primaryCta": { "label": { "en": "Get a free estimate", "es": "Pide tu presupuesto gratis" }, "target": "contact" },
+    "primaryCta": { "label": { "en": "Get a free estimate", "es": "Pide tu estimado gratis" }, "target": "contact" },
     "secondaryCta": { "label": { "en": "See our flooring", "es": "Ver nuestros pisos" }, "target": "flooring" },
     "trustBadges": [
       { "en": "Free in-home estimate", "es": "Estimado gratis en tu casa" },
-      { "en": "Licensed & insured (sample)", "es": "Con licencia y seguro (ejemplo)" },
+      { "en": "Licensed & insured (sample)", "es": "Con licencia y asegurados (ejemplo)" },
       { "en": "Financing available (sample)", "es": "Financiamiento disponible (ejemplo)" }
     ]
   },

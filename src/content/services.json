@@ -10,7 +10,7 @@
     },
     "image": {
       "src": "images/services/service-estimate.jpg",
-      "alt": { "en": "Technician measuring a room for a free estimate", "es": "Técnico midiendo un ambiente para un presupuesto gratis" },
+      "alt": { "en": "Technician measuring a room for a free estimate", "es": "Técnico midiendo un ambiente para un estimado gratis" },
       "width": 950,
       "height": 712
     },
