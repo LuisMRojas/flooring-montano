@@ -1,7 +1,5 @@
 # Montano Flooring
 User-agent: *
 Allow: /
-# Internal component showcase
-Disallow: /ui
 
 # Sitemap: added when the site address is known (card 24)

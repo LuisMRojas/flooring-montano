@@ -102,7 +102,7 @@ To re-check: `npm run start:prod`, then in another terminal `npm run audit:a11y`
 
 ## Components
 
-Reusable pieces in `src/app/shared/ui/`. They take their data as inputs and have no fixed texts. Open **`/ui`** (e.g. http://localhost:4200/ui) to see them all with the real content; this page is not linked and is marked `noindex`.
+Reusable pieces in `src/app/shared/ui/`. They take their data as inputs and have no fixed texts. (During development an internal `/ui` page showed them all; it was removed before launch, see git history.)
 
 | Component | What it does |
 | --- | --- |
