@@ -18,7 +18,8 @@ npm install
 npm start          # http://localhost:4200
 npm run start:phone  # same, reachable from a phone on your Wi-Fi: http://<your-PC-IP>:4300
 npm test           # unit tests (Vitest)
-npm run build      # production build in dist/
+npm run build      # production build (prerendered) in dist/
+npm run serve:dist # serve that build like a host would: http://localhost:4500
 ```
 
 ## Structure
@@ -78,6 +79,21 @@ Mobile-first: phones are the base, larger screens add to it. Checked at 360, 375
 
 To try it on a real phone: `npm run start:phone`, then open `http://<your-PC-IP>:4300` on a phone connected to the same Wi-Fi (Windows may ask to allow Node.js through the firewall).
 
+## SEO and performance
+
+- **Prerendered**: `npm run build` renders the page to static HTML (Angular SSR, `outputMode: static`), so search engines see all the content and the hero photo is requested immediately. The output in `dist/flooring-montano/browser` is plain static files for any host.
+- **Local SEO**: title and description with "Dearborn, MI" in both languages, Open Graph/Twitter tags, and `HomeAndConstructionBusiness` structured data (phone, Dearborn + nearby cities, opening hours, offers; no street address). Set `url` in `src/content/site.json` when the address is known to get absolute URLs.
+- **Images**: `npm run images` makes WebP copies at 320–1600 px; every photo uses `srcset`/`sizes`, lazy loading below the fold, and the hero is preloaded.
+
+Lighthouse (production build, `npm run build && npm run serve:dist`, then `npx lighthouse http://localhost:4500/`):
+
+| | Performance | Accessibility | Best practices | SEO | LCP | CLS | TBT |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Mobile (slow 4G, simulated) | 97 | 100 | 100 | 100 | 2.5 s | 0 | 20 ms |
+| Desktop | 100 | 100 | 100 | 100 | 0.5 s | 0.001 | 0 ms |
+
+Real (unthrottled) LCP is about 0.3 s. INP can only be measured with real visitors after publishing; the low blocking time (20 ms) points to a good INP.
+
 ## Accessibility
 
 Lighthouse accessibility: **100** on mobile and desktop. Covered: contrast (text ≥ 4.5:1, form borders ≥ 3:1, hero text over the photo with a darkened gradient), 48 px tap targets, skip link, visible focus, keyboard-only use (menu traps focus while open, Esc closes menus, panels and the photo viewer, focus returns to the button that opened them), labelled form fields with linked errors, alt text on every photo, ARIA on the menu, accordion and dialogs, `prefers-reduced-motion`, and 200% zoom.
@@ -133,6 +149,6 @@ Work is planned on a Trello board, one card per step:
 - [x] 19. Quote form and contact buttons
 - [x] 20. Breakpoint checks (real-phone test pending)
 - [x] 21. Accessibility (Lighthouse 100)
-- [ ] 22. Local SEO and performance
+- [x] 22. Local SEO and performance
 - [ ] 23. Final review
 - [ ] 24. Publish, HTTPS and analytics
