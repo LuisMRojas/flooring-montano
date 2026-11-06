@@ -1,7 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { provideTranslateLoader, provideTranslateService } from '@ngx-translate/core';
 import { App } from './app';
 import { routes } from './app.routes';
+import { StaticTranslateLoader } from './core/i18n/static-translate-loader';
 import { LanguageService } from './core/services/language.service';
 
 describe('App', () => {
@@ -9,7 +11,10 @@ describe('App', () => {
     localStorage.clear();
     await TestBed.configureTestingModule({
       imports: [App],
-      providers: [provideRouter(routes)],
+      providers: [
+        provideRouter(routes),
+        provideTranslateService({ loader: provideTranslateLoader(StaticTranslateLoader), fallbackLang: 'en', lang: 'en' }),
+      ],
     }).compileComponents();
   });
 
