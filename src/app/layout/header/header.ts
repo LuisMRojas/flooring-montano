@@ -12,7 +12,8 @@ import {
 } from '@angular/core';
 import { ViewportScroller } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { BRAND, CONTACT, SECTIONS, UI } from '../../core/data/site.data';
+import { UI } from '../../core/data/site.data';
+import { ContentService } from '../../core/services/content.service';
 import { LanguageService } from '../../core/services/language.service';
 import { ScrollSpyService } from '../../core/services/scroll-spy.service';
 import { LogoMark } from '../../shared/logo-mark/logo-mark';
@@ -31,13 +32,14 @@ import { LogoMark } from '../../shared/logo-mark/logo-mark';
 })
 export class Header {
   protected readonly i18n = inject(LanguageService);
+  private readonly content = inject(ContentService);
   protected readonly spy = inject(ScrollSpyService);
   private readonly document = inject(DOCUMENT);
 
-  protected readonly brand = BRAND;
-  protected readonly contact = CONTACT;
+  protected readonly brand = this.content.brand;
+  protected readonly contact = this.content.contact;
   protected readonly ui = UI;
-  protected readonly navItems = SECTIONS.filter((s) => s.inNav).sort((a, b) => a.order - b.order);
+  protected readonly navItems = this.content.navItems;
 
   protected readonly menuOpen = signal(false);
   /** Transparent over the hero at the top of the page, solid navy once scrolled or with the menu open. */

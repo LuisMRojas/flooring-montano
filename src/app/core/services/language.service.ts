@@ -1,5 +1,5 @@
 import { DOCUMENT, Injectable, effect, inject, signal } from '@angular/core';
-import { Lang, LocalizedText } from '../models/site.models';
+import { Lang, LocalizedText } from '../models/content.models';
 
 const STORAGE_KEY = 'montano-lang';
 

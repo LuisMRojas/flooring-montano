@@ -7,8 +7,9 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { LEGAL, UI } from '../../core/data/site.data';
-import { LegalDoc } from '../../core/models/site.models';
+import { UI } from '../../core/data/site.data';
+import { ContentService } from '../../core/services/content.service';
+import { LegalDoc } from '../../core/models/content.models';
 import { LanguageService } from '../../core/services/language.service';
 
 /** Privacy / Accessibility texts opened from the footer, in a native <dialog> (card 12). */
@@ -57,10 +58,11 @@ import { LanguageService } from '../../core/services/language.service';
 })
 export class LegalDialog {
   protected readonly i18n = inject(LanguageService);
+  private readonly content = inject(ContentService);
   protected readonly ui = UI;
   private readonly dialog = viewChild.required<ElementRef<HTMLDialogElement>>('dialog');
   private readonly openId = signal<LegalDoc['id'] | null>(null);
-  protected readonly doc = computed(() => LEGAL.find((d) => d.id === this.openId()));
+  protected readonly doc = computed(() => this.content.legal().find((d) => d.id === this.openId()));
 
   open(id: LegalDoc['id']): void {
     this.openId.set(id);

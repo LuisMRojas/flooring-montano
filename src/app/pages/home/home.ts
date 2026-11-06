@@ -1,13 +1,14 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Reveal } from '../../shared/reveal/reveal.directive';
-import { CONTACT, SECTIONS, UI } from '../../core/data/site.data';
+import { UI } from '../../core/data/site.data';
+import { ContentService } from '../../core/services/content.service';
 import { LanguageService } from '../../core/services/language.service';
 import { ScrollSpyService } from '../../core/services/scroll-spy.service';
+import { Reveal } from '../../shared/reveal/reveal.directive';
 
 /**
- * Single page with the 9 anchored sections.
- * Card 13 only lays out the anchors; real content arrives in card 17.
+ * Single page. The list of sections, their order and the menu all come from
+ * ContentService (src/content/site.json); real section content arrives in card 17.
  */
 @Component({
   selector: 'app-home',
@@ -16,19 +17,25 @@ import { ScrollSpyService } from '../../core/services/scroll-spy.service';
   styleUrl: './home.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Home implements AfterViewInit {
+export class Home {
   protected readonly i18n = inject(LanguageService);
+  private readonly content = inject(ContentService);
   private readonly spy = inject(ScrollSpyService);
-  protected readonly sections = [...SECTIONS].sort((a, b) => a.order - b.order);
-  protected readonly contact = CONTACT;
+
+  protected readonly sections = this.content.sections;
+  protected readonly home = this.content.home;
+  protected readonly contact = this.content.contact;
   protected readonly ui = UI;
 
-  protected readonly placeholder = {
-    en: 'Section content coming in the next steps (Trello card 17).',
-    es: 'El contenido de esta sección llega en los siguientes pasos (tarjeta 17 de Trello).',
-  };
+  constructor() {
+    // Re-observe whenever the rendered sections change.
+    effect(() => {
+      const ids = this.sections().map((s) => s.id);
+      queueMicrotask(() => this.spy.observe(ids));
+    });
+  }
 
-  ngAfterViewInit(): void {
-    this.spy.observe(this.sections.map((s) => s.id));
+  protected kicker(index: number): string {
+    return String(index + 1).padStart(2, '0');
   }
 }

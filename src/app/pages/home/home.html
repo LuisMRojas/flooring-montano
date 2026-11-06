@@ -1,50 +1,44 @@
-@for (section of sections; track section.id; let odd = $odd) {
+@for (section of sections(); track section.id; let odd = $odd; let i = $index) {
   @if (section.id === 'home') {
+    @let hero = home().hero;
     <section id="home" class="section hero" aria-labelledby="home-title">
       <picture>
-        <source media="(min-width: 768px)" srcset="images/hero/hero-living-room.jpg" />
+        <source media="(min-width: 768px)" [attr.srcset]="hero.image.src" />
         <img
           class="hero__img"
-          src="images/hero/hero-living-room-mobile.jpg"
-          [alt]="i18n.t({ en: 'Open living room with warm hardwood floors', es: 'Sala abierta con piso de madera cálido' })"
+          [src]="hero.imageMobile.src"
+          [alt]="i18n.t(hero.imageMobile.alt)"
+          [width]="hero.imageMobile.width"
+          [height]="hero.imageMobile.height"
           fetchpriority="high"
         />
       </picture>
       <div class="container hero__content">
-        <p class="hero__eyebrow">
-          {{ i18n.t({ en: 'Family-owned · Dearborn, MI', es: 'Negocio familiar · Dearborn, MI' }) }}
-        </p>
-        <h1 id="home-title">{{ i18n.t({ en: 'Floors that fit your home', es: 'Pisos a la medida de tu hogar' }) }}</h1>
-        <p class="hero__sub">
-          {{
-            i18n.t({
-              en: 'Hardwood, vinyl, laminate, tile and carpet. Installed by a local family team serving Dearborn, MI.',
-              es: 'Madera, vinilo, laminado, baldosa y alfombra. Instalados por un equipo familiar local en Dearborn, MI.'
-            })
-          }}
-        </p>
+        <p class="hero__eyebrow">{{ i18n.t(hero.eyebrow) }}</p>
+        <h1 id="home-title">{{ i18n.t(hero.title) }}</h1>
+        <p class="hero__sub">{{ i18n.t(hero.subtitle) }}</p>
         <div class="hero__actions">
-          <a class="btn btn--light" routerLink="/" fragment="contact">{{ i18n.t(ui.getFreeEstimate) }}</a>
-          <a class="btn btn--outline-light" routerLink="/" fragment="flooring">{{
-            i18n.t({ en: 'See our flooring', es: 'Ver nuestros pisos' })
+          <a class="btn btn--light" routerLink="/" [fragment]="hero.primaryCta.target">{{ i18n.t(hero.primaryCta.label) }}</a>
+          <a class="btn btn--outline-light" routerLink="/" [fragment]="hero.secondaryCta.target">{{
+            i18n.t(hero.secondaryCta.label)
           }}</a>
         </div>
       </div>
-      <!-- Decorative: the "See our flooring" button already links here. -->
-      <a class="hero__scroll" routerLink="/" fragment="flooring" aria-hidden="true" tabindex="-1">
-        {{ i18n.t({ en: 'Scroll', es: 'Desliza' }) }}
+      <!-- Decorative: the secondary button already links to the next section. -->
+      <a class="hero__scroll" routerLink="/" [fragment]="hero.secondaryCta.target" aria-hidden="true" tabindex="-1">
+        {{ i18n.t(ui.scroll) }}
         <svg viewBox="0 0 24 24" focusable="false"><path d="M6 9l6 6 6-6" /></svg>
       </a>
     </section>
   } @else {
     <section [id]="section.id" class="section placeholder" [class.placeholder--alt]="odd" [attr.aria-labelledby]="section.id + '-title'">
       <div class="container">
-        <p class="section-kicker" aria-hidden="true" appReveal>{{ section.order < 10 ? '0' + section.order : section.order }}</p>
+        <p class="section-kicker" aria-hidden="true" appReveal>{{ kicker(i) }}</p>
         <h2 [id]="section.id + '-title'" appReveal [revealDelay]="100">{{ i18n.t(section.label) }}</h2>
-        <p appReveal [revealDelay]="200">{{ i18n.t(placeholder) }}</p>
+        <p appReveal [revealDelay]="200">{{ i18n.t(ui.comingSoon) }}</p>
         @if (section.id === 'contact') {
           <p appReveal [revealDelay]="300">
-            <strong>{{ i18n.t(contact.serviceArea) }}</strong> · {{ contact.nearbyCities.join(', ') }}
+            <strong>{{ i18n.t(contact().serviceArea) }}</strong> · {{ contact().nearbyCities.join(', ') }}
           </p>
         }
       </div>

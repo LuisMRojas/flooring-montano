@@ -10,7 +10,7 @@
 
     <nav class="nav-desktop" [attr.aria-label]="i18n.t(ui.mainNav)">
       <ul>
-        @for (item of navItems; track item.id) {
+        @for (item of navItems(); track item.id) {
           <li>
             <a
               routerLink="/"
@@ -54,7 +54,7 @@
   <div #mobileMenu id="mobile-menu" class="mobile-menu" [class.is-open]="menuOpen()" [attr.inert]="menuOpen() ? null : ''">
     <nav [attr.aria-label]="i18n.t(ui.mainNav)">
       <ul>
-        @for (item of navItems; track item.id; let i = $index) {
+        @for (item of navItems(); track item.id; let i = $index) {
           <li [style.--i]="i">
             <a
               routerLink="/"
@@ -68,12 +68,12 @@
         }
       </ul>
     </nav>
-    <div class="mobile-menu__footer" [style.--i]="navItems.length">
+    <div class="mobile-menu__footer" [style.--i]="navItems().length">
       <a class="btn btn--light mobile-menu__cta" routerLink="/" fragment="contact" (click)="closeMenu()">
         {{ i18n.t(ui.getFreeEstimate) }}
       </a>
-      <a class="mobile-menu__phone" [href]="'tel:' + contact.phoneE164">{{ contact.phoneDisplay }}</a>
-      <p class="mobile-menu__area">{{ i18n.t(contact.serviceArea) }}</p>
+      <a class="mobile-menu__phone" [href]="'tel:' + contact().phoneE164">{{ contact().phoneDisplay }}</a>
+      <p class="mobile-menu__area">{{ i18n.t(contact().serviceArea) }}</p>
     </div>
   </div>
 </header>
