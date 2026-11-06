@@ -1,12 +1,14 @@
 <header class="header">
   <div class="container header__bar">
-    <a class="brand" routerLink="/" fragment="home" [attr.aria-label]="'a11y.homeLink' | translate" (click)="closeMenu()">
+    <a class="brand" routerLink="/" fragment="home" (click)="closeMenu()">
       <app-logo-mark />
-      <span class="brand__name" aria-hidden="true">
+      <!-- The visible name is the link name; "back to top" is added for screen readers -->
+      <span class="brand__name">
         @let nameParts = brand().name.split(' ');
         <span class="brand__first">{{ nameParts[0] }}</span>
-        <span class="brand__second">{{ nameParts.slice(1).join(' ') }}</span>
+        <span class="brand__second">&#32;{{ nameParts.slice(1).join(' ') }}</span>
       </span>
+      <span class="visually-hidden">, {{ 'nav.backToTop' | translate }}</span>
     </a>
 
     <nav class="nav-desktop" [attr.aria-label]="'a11y.mainNav' | translate">

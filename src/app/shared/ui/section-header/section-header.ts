@@ -14,7 +14,7 @@ import { Reveal } from '../../reveal/reveal.directive';
   host: { '[class.is-centered]': 'centered()', '[class.is-inverse]': 'inverse()' },
   template: `
     @if (kicker()) {
-      <p class="kicker" appReveal>{{ kicker() }}</p>
+      <p class="kicker" aria-hidden="true" appReveal>{{ kicker() }}</p>
     }
     <h2 [id]="titleId()" appReveal [revealDelay]="80">{{ i18n.t(title()) }}</h2>
     @if (intro(); as text) {

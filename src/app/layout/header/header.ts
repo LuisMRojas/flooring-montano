@@ -59,6 +59,10 @@ export class Header {
     effect(() => {
       const open = this.menuOpen();
       this.document.body.classList.toggle('no-scroll', open);
+      // Keep keyboard and screen-reader focus inside the open menu.
+      for (const el of this.document.querySelectorAll('.skip-link, main, app-footer, app-bottom-bar')) {
+        el.toggleAttribute('inert', open);
+      }
       if (open) {
         queueMicrotask(() => this.mobileMenu().nativeElement.querySelector<HTMLElement>('a')?.focus());
       }
