@@ -2,6 +2,8 @@
 
 Single-page, mobile-first website for **Montano Flooring LLC**, a (fictional) family flooring business serving **Dearborn, MI** and nearby areas. The page has one goal: get visitors to ask for a free estimate.
 
+**Live site: https://luismrojas.github.io/flooring-montano/**
+
 > All business data (phone number, reviews, figures, prices) is **sample content for demonstration**.
 
 ## Tech
@@ -117,9 +119,21 @@ Reusable pieces in `src/app/shared/ui/`. They take their data as inputs and have
 | `app-form-field` | Label, hint and error linked to the control |
 | `app-icon` | Line icons |
 
+## Publishing
+
+Every push to `main` runs `.github/workflows/deploy.yml`: tests, a prerendered build under `/flooring-montano/` (`npm run build:pages`), then GitHub Pages (HTTPS included). Follow it in the repo's **Actions** tab; it takes about 2 minutes.
+
+Live Lighthouse (mobile / desktop): performance 96 / 100, accessibility 100, best practices 100, SEO 100. Mobile LCP 2.4 s, CLS 0.
+
+To use your own domain later: add it in the repo's Settings → Pages, then update `url` in `src/content/site.json`, `public/sitemap.xml`, `public/robots.txt` and the `--base-href` in the `build:pages` script (`/` for a domain of its own).
+
 ## Quote requests
 
-The form posts JSON to the URL in `QUOTE_ENDPOINT` (`src/app/core/quote/quote-sender.service.ts`), for example a Formspree or Netlify form endpoint. **Until one is set, the form runs in demo mode**: it validates and confirms, but nothing is sent, and the confirmation says so.
+Set `integrations.quoteEndpoint` in `src/content/site.json` to a form endpoint (for example a free [Formspree](https://formspree.io) form: `https://formspree.io/f/xxxxxxx`) and push. **Until it is set, the form runs in demo mode**: it validates and confirms, but nothing is sent, and the confirmation says so.
+
+## Analytics
+
+Set `integrations.goatcounterCode` in `src/content/site.json` to your [GoatCounter](https://www.goatcounter.com) code (the `xxxx` in `xxxx.goatcounter.com`) and push. GoatCounter uses no cookies, so no consent banner is needed. Besides visits it records two events: `quote-request` (form sent) and `call-click` (Call tapped). Empty = no analytics.
 
 ## Languages
 
@@ -150,5 +164,5 @@ Work is planned on a Trello board, one card per step:
 - [x] 20. Breakpoint checks (real-phone test pending)
 - [x] 21. Accessibility (Lighthouse 100)
 - [x] 22. Local SEO and performance
-- [ ] 23. Final review
-- [ ] 24. Publish, HTTPS and analytics
+- [x] 23. Final review
+- [x] 24. Publish, HTTPS and analytics (form endpoint and analytics code pending)
