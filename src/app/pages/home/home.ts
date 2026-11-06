@@ -1,13 +1,9 @@
-import { ChangeDetectionStrategy, Component, computed, effect, inject, signal } from '@angular/core';
-import { TranslatePipe } from '@ngx-translate/core';
-import { Product, Service } from '../../core/models/content.models';
+import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
 import { ContentService } from '../../core/services/content.service';
 import { LanguageService } from '../../core/services/language.service';
 import { ScrollSpyService } from '../../core/services/scroll-spy.service';
 import { BottomSheet } from '../../shared/ui/bottom-sheet/bottom-sheet';
-import { CtaButton } from '../../shared/ui/cta-button/cta-button';
-import { Icon } from '../../shared/ui/icon/icon';
-import { ProcessSteps } from '../../shared/ui/process-steps/process-steps';
+import { DetailItem, DetailPanel } from './detail-panel/detail-panel';
 import { AboutSection } from './sections/about-section';
 import { ContactSection } from './sections/contact-section';
 import { FaqSection } from './sections/faq-section';
@@ -25,11 +21,8 @@ import { WhyUsSection } from './sections/why-us-section';
 @Component({
   selector: 'app-home',
   imports: [
-    TranslatePipe,
     BottomSheet,
-    CtaButton,
-    Icon,
-    ProcessSteps,
+    DetailPanel,
     AboutSection,
     ContactSection,
     FaqSection,
@@ -42,7 +35,6 @@ import { WhyUsSection } from './sections/why-us-section';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './home.html',
-  styleUrl: './home.scss',
 })
 export class Home {
   protected readonly i18n = inject(LanguageService);
@@ -51,17 +43,9 @@ export class Home {
 
   protected readonly sections = this.content.sections;
 
-  // Detail panel (layout refined in card 18)
-  protected readonly selected = signal<Product | Service | null>(null);
+  // Detail panel (card 18)
+  protected readonly selected = signal<DetailItem | null>(null);
   protected readonly detailOpen = signal(false);
-  protected readonly selectedProduct = computed(() => {
-    const s = this.selected();
-    return s && 'priceRange' in s ? s : null;
-  });
-  protected readonly selectedService = computed(() => {
-    const s = this.selected();
-    return s && 'steps' in s ? s : null;
-  });
 
   constructor() {
     // Re-observe whenever the rendered sections change.
@@ -76,7 +60,7 @@ export class Home {
     return String(index + 1).padStart(2, '0');
   }
 
-  protected showDetails(item: Product | Service): void {
+  protected showDetails(item: DetailItem): void {
     this.selected.set(item);
     this.detailOpen.set(true);
   }

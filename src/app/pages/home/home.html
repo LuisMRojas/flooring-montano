@@ -30,34 +30,9 @@
   }
 }
 
-<!-- Detail panel for products and services (refined in card 18) -->
+<!-- Detail panel for products and services (card 18) -->
 <app-bottom-sheet [(open)]="detailOpen" [label]="selected() ? i18n.t(selected()!.name) : ''">
   @if (selected(); as item) {
-    <div class="detail">
-      <img
-        class="detail__img"
-        [src]="item.image.src"
-        [alt]="i18n.t(item.image.alt)"
-        [width]="item.image.width"
-        [height]="item.image.height"
-      />
-      <h2>{{ i18n.t(item.name) }}</h2>
-      <p>{{ i18n.t(item.shortDescription) }}</p>
-      @if (selectedProduct(); as p) {
-        <h3>{{ 'product.benefits' | translate }}</h3>
-        <ul class="ticks">
-          @for (b of p.benefits; track $index) {
-            <li><app-icon name="check" /> {{ i18n.t(b) }}</li>
-          }
-        </ul>
-      }
-      @if (selectedService(); as s) {
-        <h3>{{ 'service.details' | translate }}</h3>
-        <app-process-steps [steps]="s.steps" [compact]="true" />
-      }
-      <div class="detail__cta">
-        <app-cta [cta]="item.cta" variant="primary" [block]="true" [large]="true" (pressed)="detailOpen.set(false)" />
-      </div>
-    </div>
+    <app-detail-panel [item]="item" (selectItem)="selected.set($event)" (quote)="detailOpen.set(false)" />
   }
 </app-bottom-sheet>
