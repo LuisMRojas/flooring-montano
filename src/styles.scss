@@ -1,6 +1,7 @@
 @use 'styles/tokens' as *;
 @use 'styles/custom-properties';
 @use 'styles/motion';
+@use 'styles/forms';
 
 *,
 *::before,
@@ -142,6 +143,63 @@ a {
 
     &:active {
       background: rgba(255, 255, 255, 0.12);
+    }
+  }
+
+  &--outline {
+    background: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+
+    &:active {
+      background: var(--color-surface);
+    }
+  }
+
+  &--block {
+    width: 100%;
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+// Round icon-only button (close, previous, next). 48 px tap target.
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap-size);
+  height: var(--tap-size);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-primary);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) ease,
+    transform var(--duration-fast) var(--ease-out);
+
+  &:active {
+    transform: scale(0.94);
+  }
+
+  &--dark {
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--color-border);
+    }
+
+    &--dark:hover {
+      background: rgba(255, 255, 255, 0.26);
     }
   }
 }

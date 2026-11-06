@@ -31,5 +31,36 @@
   },
   "placeholder": {
     "comingSoon": "Section content coming in the next steps (Trello card 17)."
+  },
+  "form": {
+    "optional": "optional"
+  },
+  "product": {
+    "details": "Details",
+    "priceFrom": "From ${{min}}",
+    "priceUnit": "/ sq ft installed",
+    "priceNote": "Sample price",
+    "idealFor": "Ideal for",
+    "benefits": "Why choose it"
+  },
+  "service": {
+    "details": "How it works",
+    "steps": "{{count}} steps"
+  },
+  "review": {
+    "stars": "{{rating}} out of 5 stars",
+    "project": "Project: {{subject}}"
+  },
+  "gallery": {
+    "label": "Photo gallery",
+    "open": "Open photo",
+    "previous": "Previous photo",
+    "next": "Next photo",
+    "counter": "{{n}} of {{total}}",
+    "close": "Close gallery",
+    "swipeHint": "Swipe to see more"
+  },
+  "sheet": {
+    "close": "Close panel"
   }
 }

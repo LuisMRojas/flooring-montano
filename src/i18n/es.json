@@ -31,5 +31,36 @@
   },
   "placeholder": {
     "comingSoon": "El contenido de esta sección llega en los siguientes pasos (tarjeta 17 de Trello)."
+  },
+  "form": {
+    "optional": "opcional"
+  },
+  "product": {
+    "details": "Ver detalles",
+    "priceFrom": "Desde ${{min}}",
+    "priceUnit": "/ pie² instalado",
+    "priceNote": "Precio de ejemplo",
+    "idealFor": "Ideal para",
+    "benefits": "Por qué elegirlo"
+  },
+  "service": {
+    "details": "Cómo funciona",
+    "steps": "{{count}} pasos"
+  },
+  "review": {
+    "stars": "{{rating}} de 5 estrellas",
+    "project": "Proyecto: {{subject}}"
+  },
+  "gallery": {
+    "label": "Galería de fotos",
+    "open": "Abrir foto",
+    "previous": "Foto anterior",
+    "next": "Foto siguiente",
+    "counter": "{{n}} de {{total}}",
+    "close": "Cerrar galería",
+    "swipeHint": "Desliza para ver más"
+  },
+  "sheet": {
+    "close": "Cerrar panel"
   }
 }
