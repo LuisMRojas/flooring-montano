@@ -1,0 +1,121 @@
+{
+  "images/about/about-team.jpg": [
+    320,
+    480,
+    800,
+    1060
+  ],
+  "images/flooring/flooring-carpet.jpg": [
+    320,
+    480,
+    800,
+    1024
+  ],
+  "images/flooring/flooring-hardwood.jpg": [
+    320,
+    480,
+    800,
+    1024
+  ],
+  "images/flooring/flooring-laminate.jpg": [
+    320,
+    480,
+    800,
+    1024
+  ],
+  "images/flooring/flooring-tile.jpg": [
+    320,
+    480,
+    800,
+    1024
+  ],
+  "images/flooring/flooring-vinyl.jpg": [
+    320,
+    480,
+    800,
+    1024
+  ],
+  "images/gallery/gallery-01-hallway.jpg": [
+    320,
+    480,
+    768
+  ],
+  "images/gallery/gallery-02-bathroom-tile.jpg": [
+    320,
+    480,
+    800,
+    1200,
+    1376
+  ],
+  "images/gallery/gallery-03-stairs-top.jpg": [
+    320,
+    480,
+    768
+  ],
+  "images/gallery/gallery-04-living-tile.jpg": [
+    320,
+    480,
+    800,
+    1200,
+    1376
+  ],
+  "images/gallery/gallery-05-living-hardwood.jpg": [
+    320,
+    480,
+    800,
+    1200,
+    1376
+  ],
+  "images/gallery/gallery-06-stairs-front.jpg": [
+    320,
+    480,
+    768
+  ],
+  "images/gallery/gallery-07-tile-transition.jpg": [
+    320,
+    480,
+    800,
+    1200,
+    1376
+  ],
+  "images/gallery/gallery-08-bathroom-vertical.jpg": [
+    320,
+    480,
+    768
+  ],
+  "images/hero/hero-living-room-mobile.jpg": [
+    320,
+    480,
+    576
+  ],
+  "images/hero/hero-living-room.jpg": [
+    320,
+    480,
+    800,
+    1200,
+    1376
+  ],
+  "images/services/service-estimate.jpg": [
+    320,
+    480,
+    800,
+    950
+  ],
+  "images/services/service-installation.jpg": [
+    320,
+    480,
+    800,
+    1200
+  ],
+  "images/services/service-refinishing.jpg": [
+    320,
+    480,
+    800,
+    1200
+  ],
+  "brand/montano-flooring-logo.png": [
+    320,
+    480,
+    640
+  ]
+}
