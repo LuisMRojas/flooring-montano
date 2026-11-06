@@ -1,59 +1,60 @@
-# FlooringMontano
+# Montano Flooring — sample website
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.0.
+Single-page, mobile-first website for **Montano Flooring LLC**, a (fictional) family flooring business serving **Dearborn, MI** and nearby areas. The page has one goal: get visitors to ask for a free estimate.
 
-## Development server
+> All business data (phone number, reviews, figures, prices) is **sample content for demonstration**.
 
-To start a local development server, run:
+## Tech
 
-```bash
-ng serve
-```
+- [Angular 22](https://angular.dev) (standalone components, signals, zoneless)
+- SCSS, mobile-first (`min-width` media queries); breakpoints 768 / 1024 / 1200 / 1440 px
+- Self-hosted fonts: Montserrat (headings) and Inter (text)
+- English / Spanish switch (ngx-translate comes in a later step)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Run it
 
 ```bash
-ng generate component component-name
+npm install
+npm start          # http://localhost:4200
+npm test           # unit tests (Vitest)
+npm run build      # production build in dist/
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Structure
 
-```bash
-ng generate --help
+```
+src/
+  app/
+    core/data/site.data.ts     sections, contact info, service area, legal texts ({ en, es })
+    core/services/             LanguageService, ScrollSpyService
+    layout/                    header, bottom bar (mobile), footer, legal dialog
+    pages/home/                the single page with the 9 anchored sections
+    shared/                    small reusable pieces (logo mark)
+  styles/                      design tokens and CSS custom properties
+public/
+  brand/                       logo and icons
+  images/                      site photos
 ```
 
-## Building
+## Page sections
 
-To build the project run:
+`#home` · `#flooring` · `#services` · `#why-us` · `#gallery` · `#reviews` · `#about` · `#faq` · `#contact`
 
-```bash
-ng build
-```
+The header menu, footer menu and buttons all link to these anchors. The menu is generated from `SECTIONS` in `site.data.ts`.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Progress
 
-## Running unit tests
+Work is planned on a Trello board, one card per step:
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- [x] 13. Project, header, menu and footer
+- [ ] 14. Data model and data service
+- [ ] 15. EN/ES translation (ngx-translate)
+- [ ] 16. Reusable components
+- [ ] 17. Page sections
+- [ ] 18. Product / service detail panel
+- [ ] 19. Quote form and contact buttons
+- [ ] 20. Breakpoint checks
+- [ ] 21. Accessibility
+- [ ] 22. Local SEO and performance
+- [ ] 23. Final review
+- [ ] 24. Publish, HTTPS and analytics
