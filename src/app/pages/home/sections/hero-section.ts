@@ -1,5 +1,6 @@
-import { SrcsetPipe } from '../../../core/images/srcset.pipe';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { SrcsetPipe, srcsetFor } from '../../../core/images/srcset.pipe';
+import { ChangeDetectionStrategy, Component, DOCUMENT, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformServer } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { ContentService } from '../../../core/services/content.service';
@@ -55,4 +56,32 @@ import { Icon } from '../../../shared/ui/icon/icon';
 export class HeroSection {
   protected readonly i18n = inject(LanguageService);
   protected readonly content = inject(ContentService);
+
+  constructor() {
+    // While prerendering, put the hero photo in <head> as a preload so the
+    // browser requests it before reading the rest of the page (faster LCP).
+    if (isPlatformServer(inject(PLATFORM_ID))) this.preloadHeroImage(inject(DOCUMENT));
+  }
+
+  private preloadHeroImage(doc: Document): void {
+    const hero = this.content.home().hero;
+    const variants = [
+      { image: hero.imageMobile, media: '(max-width: 767px) and (orientation: portrait)' },
+      { image: hero.image, media: '(min-width: 768px), (orientation: landscape)' },
+    ];
+    for (const { image, media } of variants) {
+      const link = doc.createElement('link');
+      link.rel = 'preload';
+      link.setAttribute('as', 'image');
+      link.setAttribute('href', image.src);
+      const srcset = srcsetFor(image.src);
+      if (srcset) {
+        link.setAttribute('imagesrcset', srcset);
+        link.setAttribute('imagesizes', '100vw');
+      }
+      link.setAttribute('media', media);
+      link.setAttribute('fetchpriority', 'high');
+      doc.head.appendChild(link);
+    }
+  }
 }
