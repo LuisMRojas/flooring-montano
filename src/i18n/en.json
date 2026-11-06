@@ -1,0 +1,35 @@
+{
+  "a11y": {
+    "skipToContent": "Skip to main content",
+    "mainNav": "Main navigation",
+    "quickActions": "Quick actions",
+    "homeLink": "Montano Flooring, back to top"
+  },
+  "nav": {
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "backToTop": "Back to top"
+  },
+  "actions": {
+    "call": "Call",
+    "text": "Text",
+    "freeEstimate": "Free Estimate",
+    "getFreeEstimate": "Get a free estimate",
+    "close": "Close",
+    "scroll": "Scroll"
+  },
+  "language": {
+    "switchTo": "Español"
+  },
+  "footer": {
+    "contactUs": "Contact us",
+    "hours": "Hours",
+    "followUs": "Follow us",
+    "copyright": "© {{year}} {{name}}",
+    "sample": "Sample website for demonstration"
+  },
+  "placeholder": {
+    "comingSoon": "Section content coming in the next steps (Trello card 17)."
+  }
+}

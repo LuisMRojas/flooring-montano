@@ -1,0 +1,35 @@
+{
+  "a11y": {
+    "skipToContent": "Saltar al contenido",
+    "mainNav": "Navegación principal",
+    "quickActions": "Acciones rápidas",
+    "homeLink": "Montano Flooring, volver arriba"
+  },
+  "nav": {
+    "menu": "Menú",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "backToTop": "Volver arriba"
+  },
+  "actions": {
+    "call": "Llamar",
+    "text": "Mensaje",
+    "freeEstimate": "Estimado gratis",
+    "getFreeEstimate": "Pide tu presupuesto gratis",
+    "close": "Cerrar",
+    "scroll": "Desliza"
+  },
+  "language": {
+    "switchTo": "English"
+  },
+  "footer": {
+    "contactUs": "Contáctanos",
+    "hours": "Horario",
+    "followUs": "Síguenos",
+    "copyright": "© {{year}} {{name}}",
+    "sample": "Sitio de ejemplo para demostración"
+  },
+  "placeholder": {
+    "comingSoon": "El contenido de esta sección llega en los siguientes pasos (tarjeta 17 de Trello)."
+  }
+}
