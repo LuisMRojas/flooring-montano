@@ -62,7 +62,7 @@
       "id": "why-us",
       "order": 4,
       "visible": true,
-      "inNav": true,
+      "inNav": false,
       "label": {
         "en": "Why us",
         "es": "Por qué elegirnos"
@@ -139,7 +139,7 @@
       "id": "contact",
       "order": 9,
       "visible": true,
-      "inNav": false,
+      "inNav": true,
       "label": {
         "en": "Contact",
         "es": "Contacto"

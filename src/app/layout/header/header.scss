@@ -252,6 +252,50 @@
   white-space: nowrap;
 }
 
+// Phone link: icon only from 1024 px, with the number from 1440 px.
+.header__phone {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-width: var(--tap-size);
+  min-height: var(--tap-size);
+  padding: 0 var(--space-2);
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:active {
+    background: rgba(255, 255, 255, 0.12);
+  }
+}
+
+.header__phone-number {
+  // Hidden visually below 1440 px but still read as the link name
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+@include from($bp-desktop) {
+  .header__phone {
+    display: inline-flex;
+  }
+}
+
+@include from($bp-wide) {
+  .header__phone-number {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+  }
+}
+
 @include from($bp-desktop) {
   .header__cta {
     display: inline-flex;

@@ -36,11 +36,11 @@ describe('App', () => {
     expect(links).toEqual([
       '/#flooring',
       '/#services',
-      '/#why-us',
       '/#gallery',
       '/#reviews',
       '/#about',
       '/#faq',
+      '/#contact',
     ]);
   });
 

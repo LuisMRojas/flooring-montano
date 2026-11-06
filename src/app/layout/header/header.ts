@@ -17,10 +17,11 @@ import { ContentService } from '../../core/services/content.service';
 import { LanguageService } from '../../core/services/language.service';
 import { ScrollSpyService } from '../../core/services/scroll-spy.service';
 import { LogoMark } from '../../shared/logo-mark/logo-mark';
+import { Icon } from '../../shared/ui/icon/icon';
 
 @Component({
   selector: 'app-header',
-  imports: [TranslatePipe, RouterLink, LogoMark],
+  imports: [TranslatePipe, RouterLink, LogoMark, Icon],
   templateUrl: './header.html',
   styleUrl: './header.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

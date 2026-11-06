@@ -136,7 +136,7 @@ describe('ContentService', () => {
       const data = cloneContent();
       data.site.sections.find((s) => s.id === 'gallery')!.visible = false;
       content.load(data);
-      expect(content.navItems().map((s) => s.id)).toEqual(['flooring', 'services', 'why-us', 'reviews', 'about', 'faq']);
+      expect(content.navItems().map((s) => s.id)).toEqual(['flooring', 'services', 'reviews', 'about', 'faq', 'contact']);
     });
 
     it('reorders the menu from the order field', () => {
