@@ -47,11 +47,13 @@ export class CtaButton {
   readonly variant = input<CtaVariant>('primary');
   /** Full width (forms, cards on phones). */
   readonly block = input(false);
+  /** 56 px tall, for the hero and closing CTAs. */
+  readonly large = input(false);
   readonly arrow = input(false);
   readonly pressed = output<CallToAction>();
 
   protected readonly classes = computed(
-    () => `btn btn--${this.variant()}${this.block() ? ' btn--block' : ''}`,
+    () => `btn btn--${this.variant()}${this.block() ? ' btn--block' : ''}${this.large() ? ' btn--lg' : ''}`,
   );
 
   protected onClick(): void {

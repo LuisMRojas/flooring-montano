@@ -3,6 +3,7 @@
 @use 'styles/motion';
 @use 'styles/forms';
 @use 'styles/cards';
+@use 'styles/sections';
 
 *,
 *::before,
@@ -159,6 +160,11 @@ a {
 
   &--block {
     width: 100%;
+  }
+
+  &--lg {
+    min-height: 56px;
+    padding-inline: var(--space-6);
   }
 
   &:disabled,
