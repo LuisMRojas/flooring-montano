@@ -1,0 +1,44 @@
+@for (section of sections; track section.id; let odd = $odd) {
+  @if (section.id === 'home') {
+    <section id="home" class="section hero" aria-labelledby="home-title">
+      <picture>
+        <source media="(min-width: 768px)" srcset="images/hero/hero-living-room.jpg" />
+        <img
+          class="hero__img"
+          src="images/hero/hero-living-room-mobile.jpg"
+          [alt]="i18n.t({ en: 'Open living room with warm hardwood floors', es: 'Sala abierta con piso de madera cálido' })"
+          fetchpriority="high"
+        />
+      </picture>
+      <div class="container hero__content">
+        <h1 id="home-title">{{ i18n.t({ en: 'Floors that fit your home', es: 'Pisos a la medida de tu hogar' }) }}</h1>
+        <p class="hero__sub">
+          {{
+            i18n.t({
+              en: 'Hardwood, vinyl, laminate, tile and carpet. Installed by a local family team serving Dearborn, MI.',
+              es: 'Madera, vinilo, laminado, baldosa y alfombra. Instalados por un equipo familiar local en Dearborn, MI.'
+            })
+          }}
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--light" routerLink="/" fragment="contact">{{ i18n.t(ui.getFreeEstimate) }}</a>
+          <a class="btn btn--outline-light" routerLink="/" fragment="flooring">{{
+            i18n.t({ en: 'See our flooring', es: 'Ver nuestros pisos' })
+          }}</a>
+        </div>
+      </div>
+    </section>
+  } @else {
+    <section [id]="section.id" class="section placeholder" [class.placeholder--alt]="odd" [attr.aria-labelledby]="section.id + '-title'">
+      <div class="container">
+        <h2 [id]="section.id + '-title'">{{ i18n.t(section.label) }}</h2>
+        <p>{{ i18n.t(placeholder) }}</p>
+        @if (section.id === 'contact') {
+          <p>
+            <strong>{{ i18n.t(contact.serviceArea) }}</strong> · {{ contact.nearbyCities.join(', ') }}
+          </p>
+        }
+      </div>
+    </section>
+  }
+}
