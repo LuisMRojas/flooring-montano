@@ -1,16 +1,41 @@
 @use 'styles/tokens' as *;
 
 :host {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 50;
   display: block;
 }
 
+// Over the hero: a soft dark gradient keeps the white logo and links readable.
+// Scrolled (or menu open): solid navy with shadow. Only opacity is animated.
 .header {
-  background: var(--color-primary);
+  position: relative;
+  isolation: isolate;
   color: var(--color-on-primary);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(180deg, rgba(6, 16, 34, 0.7) 0%, rgba(6, 16, 34, 0) 100%);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--color-primary);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transition: opacity var(--duration-base) var(--ease-out);
+  }
+}
+
+:host(.is-solid) .header::before {
+  opacity: 1;
+}
+
+.header__bar {
+  position: relative;
+  z-index: 1;
 }
 
 .header__bar {
@@ -168,6 +193,13 @@
     border-top: 1px solid rgba(255, 255, 255, 0.12);
   }
 
+  // Links slide in one after another when the menu opens.
+  &.is-open li,
+  &.is-open .mobile-menu__footer {
+    animation: menu-item-in var(--duration-base) var(--ease-out) both;
+    animation-delay: calc(60ms + var(--i, 0) * 45ms);
+  }
+
   nav a {
     display: flex;
     align-items: center;
@@ -284,5 +316,16 @@
 @include from($bp-wide) {
   .nav-desktop ul {
     gap: var(--space-3);
+  }
+}
+
+@keyframes menu-item-in {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }

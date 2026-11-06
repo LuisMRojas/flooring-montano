@@ -54,8 +54,8 @@
   <div #mobileMenu id="mobile-menu" class="mobile-menu" [class.is-open]="menuOpen()" [attr.inert]="menuOpen() ? null : ''">
     <nav [attr.aria-label]="i18n.t(ui.mainNav)">
       <ul>
-        @for (item of navItems; track item.id) {
-          <li>
+        @for (item of navItems; track item.id; let i = $index) {
+          <li [style.--i]="i">
             <a
               routerLink="/"
               [fragment]="item.id"
@@ -68,7 +68,7 @@
         }
       </ul>
     </nav>
-    <div class="mobile-menu__footer">
+    <div class="mobile-menu__footer" [style.--i]="navItems.length">
       <a class="btn btn--light mobile-menu__cta" routerLink="/" fragment="contact" (click)="closeMenu()">
         {{ i18n.t(ui.getFreeEstimate) }}
       </a>
