@@ -29,9 +29,6 @@
     "copyright": "© {{year}} {{name}}",
     "sample": "Sitio de ejemplo para demostración"
   },
-  "placeholder": {
-    "comingSoon": "El contenido de esta sección llega en los siguientes pasos (tarjeta 17 de Trello)."
-  },
   "form": {
     "optional": "opcional"
   },
@@ -62,5 +59,16 @@
   },
   "sheet": {
     "close": "Cerrar panel"
+  },
+  "contact": {
+    "callUs": "Llámanos",
+    "textUs": "Envía un mensaje",
+    "area": "Zona de servicio",
+    "hours": "Horario",
+    "formTitle": "Solicita tu estimado gratis",
+    "formSoon": "El formulario de cotización llega en el siguiente paso (tarjeta 19 de Trello)."
+  },
+  "reviews": {
+    "average": "Calificación promedio"
   }
 }

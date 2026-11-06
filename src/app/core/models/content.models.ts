@@ -50,6 +50,10 @@ export interface Section extends Orderable {
   label: LocalizedText;
   /** Shown in the header and footer menus. */
   inNav: boolean;
+  /** Section heading shown on the page (the menu uses `label`). */
+  title?: LocalizedText;
+  /** Short text under the heading. */
+  intro?: LocalizedText;
   /** Content list the section needs; if it is empty, the section and its menu item are hidden. */
   requires?: 'products' | 'services' | 'gallery' | 'testimonials' | 'faqs';
 }

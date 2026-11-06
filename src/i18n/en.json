@@ -29,9 +29,6 @@
     "copyright": "© {{year}} {{name}}",
     "sample": "Sample website for demonstration"
   },
-  "placeholder": {
-    "comingSoon": "Section content coming in the next steps (Trello card 17)."
-  },
   "form": {
     "optional": "optional"
   },
@@ -62,5 +59,16 @@
   },
   "sheet": {
     "close": "Close panel"
+  },
+  "contact": {
+    "callUs": "Call us",
+    "textUs": "Send a text",
+    "area": "Service area",
+    "hours": "Hours",
+    "formTitle": "Request your free estimate",
+    "formSoon": "The quote form arrives in the next step (Trello card 19)."
+  },
+  "reviews": {
+    "average": "Average rating"
   }
 }
