@@ -1,5 +1,6 @@
 @use 'styles/tokens' as *;
 @use 'styles/custom-properties';
+@use 'styles/motion';
 
 *,
 *::before,
@@ -114,7 +115,6 @@ a {
   font: 600 1rem/1.2 var(--font-body);
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease;
 
   &--primary {
     background: var(--color-primary);
