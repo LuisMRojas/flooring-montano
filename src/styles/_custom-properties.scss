@@ -1,0 +1,39 @@
+// CSS custom properties (Trello card 7). Loaded once from styles.scss.
+:root {
+  // Colors
+  --color-primary: #0a1931; // navy: headers, main buttons
+  --color-primary-strong: #061022;
+  --color-on-primary: #ffffff;
+  --color-accent: #a66e38; // wood: details, lines and icons only (4.28:1 on white)
+  --color-accent-strong: #8a5a2b; // wood for text / pressed state (5.87:1 with white)
+  --color-bg: #ffffff;
+  --color-surface: #f4f6f9; // cards, forms
+  --color-text: #1b2333;
+  --color-text-muted: #4a5568;
+  --color-border: #c9d1dc;
+  --color-focus: #a66e38;
+
+  // Typography
+  --font-heading: 'Montserrat', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --text-base: 1rem; // 16 px minimum body text
+  --line-height: 1.5;
+
+  // Spacing and shape
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --radius: 10px;
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --tap-size: 48px;
+
+  // Layout
+  --header-height: 64px;
+  --bottom-bar-height: 72px;
+  --container: 1200px;
+}

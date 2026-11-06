@@ -1,0 +1,12 @@
+// Design tokens (Trello card 7: provisional visual identity).
+// Mobile-first: every breakpoint mixin is a min-width query.
+
+$bp-tablet: 768px;
+$bp-desktop: 1024px;
+$bp-wide: 1440px;
+
+@mixin from($bp) {
+  @media (min-width: $bp) {
+    @content;
+  }
+}
