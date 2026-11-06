@@ -1,0 +1,68 @@
+@use 'tokens' as *;
+
+// Shared look for product and service cards (card 7: white, soft shadow, no hard borders).
+.ui-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: calc(var(--radius) + 4px);
+  background: var(--color-bg);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(10, 25, 49, 0.14);
+    }
+
+    &:hover .ui-card__media img {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.ui-card__media {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-surface);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--duration-slow) var(--ease-out);
+  }
+}
+
+.ui-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+
+  h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--color-primary);
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.ui-card__actions {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: auto;
+  padding-top: var(--space-2);
+
+  @include from($bp-tablet) {
+    grid-template-columns: 1fr 1fr;
+  }
+}

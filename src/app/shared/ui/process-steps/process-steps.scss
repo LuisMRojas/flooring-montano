@@ -1,0 +1,76 @@
+@use 'styles/tokens' as *;
+
+:host {
+  display: block;
+}
+
+ol {
+  position: relative;
+  display: grid;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+// Vertical connector between numbers
+li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 1.25rem;
+  top: 2.75rem;
+  bottom: calc(-1 * var(--space-5) + 0.25rem);
+  width: 2px;
+  background: linear-gradient(var(--color-accent), rgba(166, 110, 56, 0.25));
+  transform: translateX(-50%);
+}
+
+.num {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font: 700 1rem var(--font-heading);
+  box-shadow: 0 0 0 4px rgba(166, 110, 56, 0.25);
+}
+
+.label {
+  font-weight: 600;
+}
+
+@include from($bp-tablet) {
+  :host(:not(.is-compact)) {
+    ol {
+      grid-template-columns: repeat(var(--steps), minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+
+    li {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    // Horizontal connector
+    li:not(:last-child)::after {
+      left: calc(50% + 1.75rem);
+      right: calc(-50% + 1.75rem - var(--space-4));
+      top: 1.25rem;
+      bottom: auto;
+      width: auto;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-accent), rgba(166, 110, 56, 0.25));
+      transform: translateY(-50%);
+    }
+  }
+}
