@@ -11,3 +11,10 @@ $bp-wide: 1440px;
     @content;
   }
 }
+
+/** Phones held sideways (short, wide screens). */
+@mixin short-landscape {
+  @media (orientation: landscape) and (max-height: 500px) {
+    @content;
+  }
+}

@@ -200,3 +200,36 @@
     --icon-size: 1.125rem;
   }
 }
+
+// Phones held sideways: headline, text and both buttons fit the first screen
+@include short-landscape {
+  .hero__content {
+    align-self: center;
+    padding-block: calc(var(--header-height) + var(--space-3)) var(--space-4);
+
+    h1 {
+      max-width: 20ch;
+      margin-bottom: var(--space-2);
+      font-size: 2rem;
+    }
+  }
+
+  .hero__eyebrow {
+    margin-bottom: var(--space-2);
+  }
+
+  .hero__sub {
+    margin-bottom: var(--space-4);
+    font-size: 1rem;
+    max-width: 52ch;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .hero__badges {
+    display: none;
+  }
+}

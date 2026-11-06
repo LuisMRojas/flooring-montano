@@ -37,3 +37,10 @@
   --bottom-bar-height: 72px;
   --container: 1200px;
 }
+
+// Phones held sideways: slimmer bottom bar (buttons stay 48 px tall)
+@media (orientation: landscape) and (max-height: 500px) {
+  :root {
+    --bottom-bar-height: 64px;
+  }
+}

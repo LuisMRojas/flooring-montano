@@ -15,7 +15,7 @@ import { Icon } from '../../../shared/ui/icon/icon';
     @let hero = content.home().hero;
     <section id="home" class="hero" aria-labelledby="home-title">
       <picture>
-        <source media="(min-width: 768px)" [attr.srcset]="hero.image.src" />
+        <source media="(min-width: 768px), (orientation: landscape)" [attr.srcset]="hero.image.src" />
         <img
           class="hero__img"
           [src]="hero.imageMobile.src"

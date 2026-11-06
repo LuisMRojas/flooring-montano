@@ -56,6 +56,13 @@
   }
 }
 
+@include short-landscape {
+  .bar {
+    padding-block: var(--space-2) calc(var(--space-2) + env(safe-area-inset-bottom));
+    padding-inline: max(var(--space-4), env(safe-area-inset-left)) max(var(--space-4), env(safe-area-inset-right));
+  }
+}
+
 @include from($bp-desktop) {
   :host {
     display: none;
