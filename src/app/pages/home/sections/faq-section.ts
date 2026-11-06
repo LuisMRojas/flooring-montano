@@ -30,6 +30,10 @@ import { SectionHeader } from '../../../shared/ui/section-header/section-header'
 
     .faq {
       display: grid;
+      grid-template-areas:
+        'head'
+        'list'
+        'cta';
       gap: var(--space-6);
 
       @include from($bp-desktop) {
