@@ -78,6 +78,12 @@ Mobile-first: phones are the base, larger screens add to it. Checked at 360, 375
 
 To try it on a real phone: `npm run start:phone`, then open `http://<your-PC-IP>:4300` on a phone connected to the same Wi-Fi (Windows may ask to allow Node.js through the firewall).
 
+## Accessibility
+
+Lighthouse accessibility: **100** on mobile and desktop. Covered: contrast (text ≥ 4.5:1, form borders ≥ 3:1, hero text over the photo with a darkened gradient), 48 px tap targets, skip link, visible focus, keyboard-only use (menu traps focus while open, Esc closes menus, panels and the photo viewer, focus returns to the button that opened them), labelled form fields with linked errors, alt text on every photo, ARIA on the menu, accordion and dialogs, `prefers-reduced-motion`, and 200% zoom.
+
+To re-check: `npm run start:prod`, then in another terminal `npm run audit:a11y`.
+
 ## Components
 
 Reusable pieces in `src/app/shared/ui/`. They take their data as inputs and have no fixed texts. Open **`/ui`** (e.g. http://localhost:4200/ui) to see them all with the real content; this page is not linked and is marked `noindex`.
@@ -126,7 +132,7 @@ Work is planned on a Trello board, one card per step:
 - [x] 18. Product / service detail panel
 - [x] 19. Quote form and contact buttons
 - [x] 20. Breakpoint checks (real-phone test pending)
-- [ ] 21. Accessibility
+- [x] 21. Accessibility (Lighthouse 100)
 - [ ] 22. Local SEO and performance
 - [ ] 23. Final review
 - [ ] 24. Publish, HTTPS and analytics

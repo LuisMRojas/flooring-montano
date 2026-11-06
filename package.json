@@ -7,7 +7,9 @@
     "start:phone": "ng serve --host 0.0.0.0 --port 4300",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start:prod": "ng serve --configuration production --port 4400",
+    "audit:a11y": "lighthouse http://localhost:4400/ --only-categories=accessibility --view"
   },
   "private": true,
   "packageManager": "npm@11.19.0",
@@ -29,6 +31,7 @@
     "@angular/cli": "^22.2.0",
     "@angular/compiler-cli": "^22.2.0",
     "jsdom": "^30.0.0",
+    "lighthouse": "^12.8.2",
     "prettier": "^3.8.1",
     "typescript": "~6.0.2",
     "vitest": "^5.0.0"
