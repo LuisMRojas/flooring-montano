@@ -1,0 +1,74 @@
+<div class="gallery" role="region" [attr.aria-label]="'gallery.label' | translate">
+  <ul #track class="track" (scroll)="onTrackScroll()">
+    @for (item of images(); track item.id; let i = $index) {
+      <li class="slide" [class.is-portrait]="item.orientation === 'portrait'">
+        <button type="button" class="photo" (click)="open(i, $event)">
+          <img
+            [src]="item.image.src"
+            [alt]="i18n.t(item.image.alt)"
+            [width]="item.image.width"
+            [height]="item.image.height"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="photo__zoom" aria-hidden="true"><app-icon name="expand" /></span>
+          <span class="visually-hidden">{{ 'gallery.open' | translate }}</span>
+        </button>
+      </li>
+    }
+  </ul>
+
+  <p class="counter" aria-live="polite">
+    <span class="dots" aria-hidden="true">
+      @for (item of images(); track item.id; let i = $index) {
+        <span class="dot" [class.is-active]="i === stripIndex()"></span>
+      }
+    </span>
+    <span class="visually-hidden">{{ 'gallery.counter' | translate: { n: stripIndex() + 1, total: images().length } }}</span>
+    <span class="hint" aria-hidden="true">{{ 'gallery.swipeHint' | translate }}</span>
+  </p>
+</div>
+
+<dialog
+  #viewer
+  class="viewer"
+  [attr.aria-label]="'gallery.label' | translate"
+  (close)="onClosed()"
+  (click)="onBackdropClick($event)"
+  (keydown)="onKeydown($event)"
+>
+  @if (current(); as item) {
+    <div class="viewer__top">
+      <p class="viewer__count" aria-live="polite">
+        {{ 'gallery.counter' | translate: { n: viewerIndex()! + 1, total: images().length } }}
+      </p>
+      <button type="button" class="icon-btn icon-btn--dark" (click)="close()">
+        <app-icon name="close" />
+        <span class="visually-hidden">{{ 'gallery.close' | translate }}</span>
+      </button>
+    </div>
+
+    <figure class="viewer__stage" (pointerdown)="onPointerDown($event)" (pointerup)="onPointerUp($event)">
+      @for (shown of [item]; track shown.id) {
+        <img
+          class="viewer__img"
+          [src]="shown.image.src"
+          [alt]="i18n.t(shown.image.alt)"
+          [width]="shown.image.width"
+          [height]="shown.image.height"
+          draggable="false"
+        />
+      }
+      <figcaption>{{ i18n.t(item.image.alt) }}</figcaption>
+    </figure>
+
+    <button type="button" class="icon-btn icon-btn--dark viewer__nav viewer__nav--prev" (click)="previous()">
+      <app-icon name="chevron-left" />
+      <span class="visually-hidden">{{ 'gallery.previous' | translate }}</span>
+    </button>
+    <button type="button" class="icon-btn icon-btn--dark viewer__nav viewer__nav--next" (click)="next()">
+      <app-icon name="chevron-right" />
+      <span class="visually-hidden">{{ 'gallery.next' | translate }}</span>
+    </button>
+  }
+</dialog>
