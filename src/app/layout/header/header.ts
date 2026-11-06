@@ -10,9 +10,9 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ViewportScroller } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { UI } from '../../core/data/site.data';
 import { ContentService } from '../../core/services/content.service';
 import { LanguageService } from '../../core/services/language.service';
 import { ScrollSpyService } from '../../core/services/scroll-spy.service';
@@ -20,7 +20,7 @@ import { LogoMark } from '../../shared/logo-mark/logo-mark';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, LogoMark],
+  imports: [TranslatePipe, RouterLink, LogoMark],
   templateUrl: './header.html',
   styleUrl: './header.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -38,14 +38,12 @@ export class Header {
 
   protected readonly brand = this.content.brand;
   protected readonly contact = this.content.contact;
-  protected readonly ui = UI;
   protected readonly navItems = this.content.navItems;
 
   protected readonly menuOpen = signal(false);
   /** Transparent over the hero at the top of the page, solid navy once scrolled or with the menu open. */
   private readonly scrolled = signal(false);
   protected readonly solid = computed(() => this.scrolled() || this.menuOpen());
-  protected readonly langLabel = computed(() => (this.i18n.lang() === 'en' ? 'Español' : 'English'));
   protected readonly langCode = computed(() => (this.i18n.lang() === 'en' ? 'es' : 'en'));
 
   private readonly menuButton = viewChild.required<ElementRef<HTMLButtonElement>>('menuButton');

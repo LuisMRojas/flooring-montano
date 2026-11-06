@@ -26,7 +26,7 @@
       </div>
       <!-- Decorative: the secondary button already links to the next section. -->
       <a class="hero__scroll" routerLink="/" [fragment]="hero.secondaryCta.target" aria-hidden="true" tabindex="-1">
-        {{ i18n.t(ui.scroll) }}
+        {{ 'actions.scroll' | translate }}
         <svg viewBox="0 0 24 24" focusable="false"><path d="M6 9l6 6 6-6" /></svg>
       </a>
     </section>
@@ -35,7 +35,7 @@
       <div class="container">
         <p class="section-kicker" aria-hidden="true" appReveal>{{ kicker(i) }}</p>
         <h2 [id]="section.id + '-title'" appReveal [revealDelay]="100">{{ i18n.t(section.label) }}</h2>
-        <p appReveal [revealDelay]="200">{{ i18n.t(ui.comingSoon) }}</p>
+        <p appReveal [revealDelay]="200">{{ 'placeholder.comingSoon' | translate }}</p>
         @if (section.id === 'contact') {
           <p appReveal [revealDelay]="300">
             <strong>{{ i18n.t(contact().serviceArea) }}</strong> · {{ contact().nearbyCities.join(', ') }}

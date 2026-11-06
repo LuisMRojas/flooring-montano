@@ -1,14 +1,15 @@
 <header class="header">
   <div class="container header__bar">
-    <a class="brand" routerLink="/" fragment="home" [attr.aria-label]="i18n.t(ui.homeLink)" (click)="closeMenu()">
+    <a class="brand" routerLink="/" fragment="home" [attr.aria-label]="'a11y.homeLink' | translate" (click)="closeMenu()">
       <app-logo-mark />
       <span class="brand__name" aria-hidden="true">
-        <span class="brand__first">Montano</span>
-        <span class="brand__second">Flooring</span>
+        @let nameParts = brand().name.split(' ');
+        <span class="brand__first">{{ nameParts[0] }}</span>
+        <span class="brand__second">{{ nameParts.slice(1).join(' ') }}</span>
       </span>
     </a>
 
-    <nav class="nav-desktop" [attr.aria-label]="i18n.t(ui.mainNav)">
+    <nav class="nav-desktop" [attr.aria-label]="'a11y.mainNav' | translate">
       <ul>
         @for (item of navItems(); track item.id) {
           <li>
@@ -30,10 +31,10 @@
           <circle cx="12" cy="12" r="9" />
           <path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z" />
         </svg>
-        {{ langLabel() }}
+        {{ 'language.switchTo' | translate }}
       </button>
 
-      <a class="btn btn--light header__cta" routerLink="/" fragment="contact">{{ i18n.t(ui.freeEstimate) }}</a>
+      <a class="btn btn--light header__cta" routerLink="/" fragment="contact">{{ 'actions.freeEstimate' | translate }}</a>
 
       <button
         #menuButton
@@ -46,13 +47,13 @@
         <span class="menu-btn__icon" [class.is-open]="menuOpen()" aria-hidden="true">
           <span></span><span></span><span></span>
         </span>
-        <span class="visually-hidden">{{ menuOpen() ? i18n.t(ui.closeMenu) : i18n.t(ui.openMenu) }}</span>
+        <span class="visually-hidden">{{ menuOpen() ? ('nav.closeMenu' | translate) : ('nav.openMenu' | translate) }}</span>
       </button>
     </div>
   </div>
 
   <div #mobileMenu id="mobile-menu" class="mobile-menu" [class.is-open]="menuOpen()" [attr.inert]="menuOpen() ? null : ''">
-    <nav [attr.aria-label]="i18n.t(ui.mainNav)">
+    <nav [attr.aria-label]="'a11y.mainNav' | translate">
       <ul>
         @for (item of navItems(); track item.id; let i = $index) {
           <li [style.--i]="i">
@@ -70,7 +71,7 @@
     </nav>
     <div class="mobile-menu__footer" [style.--i]="navItems().length">
       <a class="btn btn--light mobile-menu__cta" routerLink="/" fragment="contact" (click)="closeMenu()">
-        {{ i18n.t(ui.getFreeEstimate) }}
+        {{ 'actions.getFreeEstimate' | translate }}
       </a>
       <a class="mobile-menu__phone" [href]="'tel:' + contact().phoneE164">{{ contact().phoneDisplay }}</a>
       <p class="mobile-menu__area">{{ i18n.t(contact().serviceArea) }}</p>

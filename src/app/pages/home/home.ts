@@ -1,6 +1,6 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { UI } from '../../core/data/site.data';
 import { ContentService } from '../../core/services/content.service';
 import { LanguageService } from '../../core/services/language.service';
 import { ScrollSpyService } from '../../core/services/scroll-spy.service';
@@ -12,7 +12,7 @@ import { Reveal } from '../../shared/reveal/reveal.directive';
  */
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, Reveal],
+  imports: [TranslatePipe, RouterLink, Reveal],
   templateUrl: './home.html',
   styleUrl: './home.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,7 +25,6 @@ export class Home {
   protected readonly sections = this.content.sections;
   protected readonly home = this.content.home;
   protected readonly contact = this.content.contact;
-  protected readonly ui = UI;
 
   constructor() {
     // Re-observe whenever the rendered sections change.
