@@ -80,6 +80,10 @@ Reusable pieces in `src/app/shared/ui/`. They take their data as inputs and have
 | `app-form-field` | Label, hint and error linked to the control |
 | `app-icon` | Line icons |
 
+## Quote requests
+
+The form posts JSON to the URL in `QUOTE_ENDPOINT` (`src/app/core/quote/quote-sender.service.ts`), for example a Formspree or Netlify form endpoint. **Until one is set, the form runs in demo mode**: it validates and confirms, but nothing is sent, and the confirmation says so.
+
 ## Languages
 
 There are two kinds of text, both in English and Spanish:
@@ -105,7 +109,7 @@ Work is planned on a Trello board, one card per step:
 - [x] 16. Reusable components
 - [x] 17. Page sections
 - [x] 18. Product / service detail panel
-- [ ] 19. Quote form and contact buttons
+- [x] 19. Quote form and contact buttons
 - [ ] 20. Breakpoint checks
 - [ ] 21. Accessibility
 - [ ] 22. Local SEO and performance
