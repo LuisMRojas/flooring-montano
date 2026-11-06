@@ -30,7 +30,8 @@ src/
     core/services/             ContentService, LanguageService, ScrollSpyService
     layout/                    header, bottom bar (mobile), footer, legal dialog
     pages/home/                the single page with the 9 anchored sections
-    shared/                    small reusable pieces (logo mark, appReveal)
+    shared/ui/                 reusable components (see below)
+    shared/                    logo mark, appReveal directive
   content/                     all texts and data (JSON), see "Editing content"
   i18n/                        interface texts: en.json, es.json (menu, buttons, labels)
   styles/                      design tokens, CSS custom properties and motion
@@ -62,6 +63,23 @@ Every record in a list has `id`, `order` and `visible`:
 
 Buttons say where they go with `"target"` (a section id such as `"contact"`), and can preselect an option in the quote form with `"prefill"`. `npm test` checks that every text has both languages, ids are unique and every button points to a real section.
 
+## Components
+
+Reusable pieces in `src/app/shared/ui/`. They take their data as inputs and have no fixed texts. Open **`/ui`** (e.g. http://localhost:4200/ui) to see them all with the real content; this page is not linked and is marked `noindex`.
+
+| Component | What it does |
+| --- | --- |
+| `app-cta` | Button to a section; remembers the product/service for the quote form |
+| `app-section-header` | Kicker, title and intro with scroll reveal |
+| `app-product-card` / `app-service-card` | Photo, text, price or steps, Details + quote |
+| `app-testimonial-card` | Stars (accessible), quote, initials, project |
+| `app-process-steps` | Numbered steps: vertical on phones, horizontal from 768 px |
+| `app-faq-accordion` | One answer open at a time, ARIA wired |
+| `app-gallery` | Swipe strip on phones, grid on larger screens, full-screen viewer |
+| `app-bottom-sheet` | Detail panel: bottom sheet you can drag down on phones, side panel on desktop |
+| `app-form-field` | Label, hint and error linked to the control |
+| `app-icon` | Line icons |
+
 ## Languages
 
 There are two kinds of text, both in English and Spanish:
@@ -84,7 +102,7 @@ Work is planned on a Trello board, one card per step:
 - [x] 13. Project, header, menu and footer
 - [x] 14. Data model and data service
 - [x] 15. EN/ES translation (ngx-translate)
-- [ ] 16. Reusable components
+- [x] 16. Reusable components
 - [ ] 17. Page sections
 - [ ] 18. Product / service detail panel
 - [ ] 19. Quote form and contact buttons
