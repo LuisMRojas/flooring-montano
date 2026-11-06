@@ -12,8 +12,9 @@
   color: var(--color-on-primary);
   overflow: hidden;
 
+  // From 1024 px there is no bottom bar: the hero fills the whole screen under the header.
   @include from($bp-desktop) {
-    min-height: min(calc(100svh - var(--header-height)), 760px);
+    min-height: calc(100svh - var(--header-height));
   }
 }
 
