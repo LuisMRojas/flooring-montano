@@ -47,17 +47,33 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, rgba(10, 25, 49, 0.45) 0%, rgba(10, 25, 49, 0.2) 35%, rgba(10, 25, 49, 0.9) 80%);
+  // Text sits in the lower two thirds on phones: keep that area at 75%+ navy
+  // so white and gold text pass contrast even over the bright windows.
+  background: linear-gradient(
+    180deg,
+    rgba(10, 25, 49, 0.45) 0%,
+    rgba(10, 25, 49, 0.3) 14%,
+    rgba(10, 25, 49, 0.78) 30%,
+    rgba(10, 25, 49, 0.92) 70%
+  );
 
   @include from($bp-desktop) {
     background:
-      linear-gradient(90deg, rgba(10, 25, 49, 0.9) 0%, rgba(10, 25, 49, 0.55) 45%, rgba(10, 25, 49, 0.1) 75%),
+      linear-gradient(90deg, rgba(10, 25, 49, 0.92) 0%, rgba(10, 25, 49, 0.72) 45%, rgba(10, 25, 49, 0.12) 78%),
       linear-gradient(180deg, rgba(10, 25, 49, 0.5) 0%, rgba(10, 25, 49, 0) 25%);
   }
 }
 
 .hero__content {
   align-self: end;
+
+  // Extra safety for text over the photo (not on the buttons)
+  h1,
+  .hero__eyebrow,
+  .hero__sub,
+  .hero__badges {
+    text-shadow: 0 1px 14px rgba(6, 16, 34, 0.55);
+  }
   padding-block: calc(var(--header-height) + var(--space-8)) var(--space-8);
 
   @include from($bp-desktop) {
