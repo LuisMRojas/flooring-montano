@@ -24,10 +24,10 @@
   },
   "footer": {
     "contactUs": "Contact us",
-    "hours": "Hours",
     "followUs": "Follow us",
     "copyright": "© {{year}} {{name}}",
-    "sample": "Sample website for demonstration"
+    "sample": "Sample website for demonstration",
+    "company": "Company"
   },
   "form": {
     "optional": "optional",

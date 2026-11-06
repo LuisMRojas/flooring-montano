@@ -8,7 +8,39 @@
       </p>
     </div>
 
-    <div>
+    <!-- Card 3: Flooring and Services from the data, then Company -->
+    <nav class="footer__nav" [attr.aria-label]="'a11y.footerNav' | translate">
+      @if (flooring(); as f) {
+        <div>
+          <h2 class="footer__title">{{ i18n.t(f.label) }}</h2>
+          <ul class="footer__list">
+            @for (p of products(); track p.id) {
+              <li><a routerLink="/" fragment="flooring">{{ i18n.t(p.name) }}</a></li>
+            }
+          </ul>
+        </div>
+      }
+      @if (services(); as s) {
+        <div>
+          <h2 class="footer__title">{{ i18n.t(s.label) }}</h2>
+          <ul class="footer__list">
+            @for (svc of serviceItems(); track svc.id) {
+              <li><a routerLink="/" fragment="services">{{ i18n.t(svc.name) }}</a></li>
+            }
+          </ul>
+        </div>
+      }
+      <div>
+        <h2 class="footer__title">{{ 'footer.company' | translate }}</h2>
+        <ul class="footer__list">
+          @for (item of company(); track item.id) {
+            <li><a routerLink="/" [fragment]="item.id">{{ i18n.t(item.label) }}</a></li>
+          }
+        </ul>
+      </div>
+    </nav>
+
+    <div class="footer__contact">
       <h2 class="footer__title">{{ 'footer.contactUs' | translate }}</h2>
       <ul class="footer__list">
         <li>
@@ -21,10 +53,6 @@
           <a routerLink="/" fragment="contact">{{ 'actions.getFreeEstimate' | translate }}</a>
         </li>
       </ul>
-    </div>
-
-    <div>
-      <h2 class="footer__title">{{ 'footer.hours' | translate }}</h2>
       <dl class="footer__hours">
         @for (h of contact().hours; track $index) {
           <div>
@@ -33,29 +61,14 @@
           </div>
         }
       </dl>
-    </div>
-
-    <nav [attr.aria-label]="'a11y.footerNav' | translate">
-      <h2 class="footer__title">{{ 'nav.menu' | translate }}</h2>
-      <ul class="footer__list footer__list--cols">
-        @for (item of navItems(); track item.id) {
-          <li>
-            <a routerLink="/" [fragment]="item.id">{{ i18n.t(item.label) }}</a>
-          </li>
-        }
-      </ul>
-    </nav>
-
-    @if (contact().social.length) {
-      <div>
-        <h2 class="footer__title">{{ 'footer.followUs' | translate }}</h2>
-        <ul class="footer__list">
+      @if (contact().social.length) {
+        <ul class="footer__list footer__social" [attr.aria-label]="'footer.followUs' | translate">
           @for (s of contact().social; track s.url) {
             <li><a [href]="s.url" target="_blank" rel="noopener">{{ s.name }}</a></li>
           }
         </ul>
-      </div>
-    }
+      }
+    </div>
   </div>
 
   <div class="footer__bottom">

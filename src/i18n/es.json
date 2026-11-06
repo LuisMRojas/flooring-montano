@@ -24,10 +24,10 @@
   },
   "footer": {
     "contactUs": "Contáctanos",
-    "hours": "Horario",
     "followUs": "Síguenos",
     "copyright": "© {{year}} {{name}}",
-    "sample": "Sitio de ejemplo para demostración"
+    "sample": "Sitio de ejemplo para demostración",
+    "company": "Empresa"
   },
   "form": {
     "optional": "opcional",

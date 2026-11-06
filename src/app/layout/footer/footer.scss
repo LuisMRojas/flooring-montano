@@ -11,12 +11,45 @@
   padding-block: var(--space-12) var(--space-8);
 
   @include from($bp-tablet) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
   }
 
   @include from($bp-desktop) {
-    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    grid-template-columns: 1.1fr 3fr 1.3fr;
+    gap: var(--space-8);
   }
+}
+
+// Flooring, Services and Company side by side inside the nav landmark
+.footer__nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-8) var(--space-4);
+
+  @include from($bp-tablet) {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @include from($bp-desktop) {
+    grid-column: auto;
+  }
+}
+
+.footer__contact {
+  @include from($bp-tablet) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  @include from($bp-desktop) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+.footer__hours {
+  margin-top: var(--space-4) !important;
 }
 
 .footer__brand img {
@@ -61,11 +94,6 @@
     }
   }
 
-  &--cols {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: var(--space-4);
-  }
 }
 
 .footer__hours {
