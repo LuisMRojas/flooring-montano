@@ -29,7 +29,7 @@ src/
     core/models/               content types (Product, Service, Faq, Testimonial...)
     core/services/             ContentService, LanguageService, ScrollSpyService
     layout/                    header, bottom bar (mobile), footer, legal dialog
-    pages/home/                the single page with the 9 anchored sections
+    pages/home/                the single page; sections/ has one component per section
     shared/ui/                 reusable components (see below)
     shared/                    logo mark, appReveal directive
   content/                     all texts and data (JSON), see "Editing content"
@@ -103,7 +103,7 @@ Work is planned on a Trello board, one card per step:
 - [x] 14. Data model and data service
 - [x] 15. EN/ES translation (ngx-translate)
 - [x] 16. Reusable components
-- [ ] 17. Page sections
+- [x] 17. Page sections
 - [ ] 18. Product / service detail panel
 - [ ] 19. Quote form and contact buttons
 - [ ] 20. Breakpoint checks
