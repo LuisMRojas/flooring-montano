@@ -1,0 +1,80 @@
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <img [src]="brand.logo" [alt]="i18n.t(brand.logoAlt)" width="120" height="120" loading="lazy" />
+      <p class="footer__area">
+        <strong>{{ i18n.t(contact.serviceArea) }}</strong>
+        <span>{{ contact.nearbyCities.join(' · ') }}</span>
+      </p>
+    </div>
+
+    <div>
+      <h2 class="footer__title">{{ i18n.t(ui.contactUs) }}</h2>
+      <ul class="footer__list">
+        <li>
+          <a [href]="'tel:' + contact.phoneE164">{{ i18n.t(ui.call) }}: {{ contact.phoneDisplay }}</a>
+        </li>
+        <li>
+          <a [href]="'sms:' + contact.phoneE164">{{ i18n.t(ui.text) }}: {{ contact.phoneDisplay }}</a>
+        </li>
+        <li>
+          <a routerLink="/" fragment="contact">{{ i18n.t(ui.getFreeEstimate) }}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="footer__title">{{ i18n.t(ui.hours) }}</h2>
+      <dl class="footer__hours">
+        @for (h of contact.hours; track $index) {
+          <div>
+            <dt>{{ i18n.t(h.days) }}</dt>
+            <dd>{{ i18n.t(h.time) }}</dd>
+          </div>
+        }
+      </dl>
+    </div>
+
+    <nav [attr.aria-label]="i18n.t(ui.mainNav)">
+      <h2 class="footer__title">{{ i18n.t(ui.menu) }}</h2>
+      <ul class="footer__list footer__list--cols">
+        @for (item of navItems; track item.id) {
+          <li>
+            <a routerLink="/" [fragment]="item.id">{{ i18n.t(item.label) }}</a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    @if (contact.social.length) {
+      <div>
+        <h2 class="footer__title">{{ i18n.t(ui.followUs) }}</h2>
+        <ul class="footer__list">
+          @for (s of contact.social; track s.url) {
+            <li><a [href]="s.url" target="_blank" rel="noopener">{{ s.name }}</a></li>
+          }
+        </ul>
+      </div>
+    }
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <p>© {{ year }} {{ brand.legalName }} · {{ i18n.t(ui.sample) }}</p>
+      <ul class="footer__legal">
+        @for (doc of legal; track doc.id) {
+          <li>
+            <button type="button" class="footer__link-btn" (click)="legalDialog.open(doc.id)">
+              {{ i18n.t(doc.title) }}
+            </button>
+          </li>
+        }
+        <li>
+          <a routerLink="/" fragment="home">{{ i18n.t(ui.backToTop) }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <app-legal-dialog #legalDialog />
+</footer>

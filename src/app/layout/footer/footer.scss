@@ -1,0 +1,133 @@
+@use 'styles/tokens' as *;
+
+.footer {
+  background: var(--color-primary-strong);
+  color: var(--color-on-primary);
+}
+
+.footer__grid {
+  display: grid;
+  gap: var(--space-8);
+  padding-block: var(--space-12) var(--space-8);
+
+  @include from($bp-tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include from($bp-desktop) {
+    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  }
+}
+
+.footer__brand img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  margin-bottom: var(--space-4);
+}
+
+.footer__area {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+
+  span {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.footer__title {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #e8c49f;
+  margin-bottom: var(--space-3);
+}
+
+.footer__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-size);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &--cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-4);
+  }
+}
+
+.footer__hours {
+  margin: 0;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding-block: var(--space-2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  dt {
+    font-weight: 600;
+  }
+
+  dd {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.footer__bottom-inner {
+  display: grid;
+  gap: var(--space-2);
+  padding-block: var(--space-4);
+
+  p {
+    margin: 0;
+  }
+
+  @include from($bp-tablet) {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+}
+
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  a,
+  .footer__link-btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-size);
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
