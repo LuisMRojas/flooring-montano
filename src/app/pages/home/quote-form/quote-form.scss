@@ -1,0 +1,175 @@
+@use 'styles/tokens' as *;
+
+:host {
+  display: block;
+}
+
+.form {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.form__title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+}
+
+.form__row {
+  display: grid;
+  gap: var(--space-5);
+
+  @include from($bp-tablet) {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+// The desktop contact column is narrow: keep pairs stacked between 1024 and 1200 px.
+@media (min-width: $bp-desktop) and (max-width: 1199px) {
+  .form__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form__chosen {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  justify-self: start;
+  margin: 0;
+  padding: var(--space-2) var(--space-4);
+  border-radius: 999px;
+  background: rgba(166, 110, 56, 0.14);
+  color: var(--color-accent-strong);
+  font-weight: 600;
+  animation: fade-up var(--duration-base) var(--ease-out) both;
+}
+
+// Brief highlight when a quote button preselects the flooring type
+.select.is-flash {
+  animation: flash 1.2s ease;
+}
+
+@keyframes flash {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(166, 110, 56, 0);
+  }
+  30% {
+    box-shadow: 0 0 0 4px rgba(166, 110, 56, 0.45);
+  }
+}
+
+.notice {
+  display: flex;
+  gap: var(--space-3);
+  margin: calc(-1 * var(--space-2)) 0 0;
+  padding: var(--space-3) var(--space-4);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius);
+  background: rgba(166, 110, 56, 0.1);
+  color: var(--color-text);
+
+  app-icon {
+    margin-top: 2px;
+    color: var(--color-accent-strong);
+  }
+}
+
+.form__summary {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  background: #fef3f2;
+  color: #b42318;
+  font-weight: 600;
+}
+
+.form__submit {
+  margin-top: var(--space-2);
+}
+
+.form__consent {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.spinner {
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Honeypot: off-screen, not display:none (some bots skip hidden fields)
+.hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+// ---------- Confirmation ----------
+.success {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6) 0;
+  text-align: center;
+  animation: fade-up var(--duration-slow) var(--ease-out) both;
+
+  h3 {
+    margin: 0;
+    font-size: 1.75rem;
+    color: var(--color-primary);
+    outline: none;
+  }
+
+  p {
+    margin: 0;
+    max-width: 34ch;
+  }
+}
+
+.success__icon {
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  --icon-size: 2rem;
+  animation: pop 0.5s var(--ease-out) both;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.success__demo {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}

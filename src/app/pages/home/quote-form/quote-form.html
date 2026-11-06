@@ -1,0 +1,203 @@
+@if (success(); as s) {
+  <div class="success" role="status">
+    <span class="success__icon" aria-hidden="true"><app-icon name="check" /></span>
+    <h3 tabindex="-1">{{ 'form.success.title' | translate: { name: s.name } }}</h3>
+    <p>{{ 'form.success.text' | translate: { phone: s.phone } }}</p>
+    @if (s.demo) {
+      <p class="success__demo">{{ 'form.success.demo' | translate }}</p>
+    }
+    <button type="button" class="btn btn--outline" (click)="reset()">{{ 'form.success.again' | translate }}</button>
+  </div>
+} @else {
+  <form class="form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <h3 class="form__title">{{ 'contact.formTitle' | translate }}</h3>
+
+    @if (preselectedName(); as chosen) {
+      <p class="form__chosen" aria-live="polite">
+        <app-icon name="check" />
+        {{ 'form.preselected' | translate: { name: i18n.t(chosen) } }}
+      </p>
+    }
+
+    <app-form-field #fName fieldId="q-name" [label]="'form.name' | translate" [required]="true" [error]="errorKey('name') ? (errorKey('name')! | translate) : null">
+      <input
+        class="input"
+        id="q-name"
+        formControlName="name"
+        autocomplete="name"
+        autocapitalize="words"
+        enterkeyhint="next"
+        [attr.aria-invalid]="!!errorKey('name')"
+        [attr.aria-describedby]="fName.describedBy()"
+        required
+      />
+    </app-form-field>
+
+    <div class="form__row">
+      <app-form-field
+        #fPhone
+        fieldId="q-phone"
+        [label]="'form.phone' | translate"
+        [required]="true"
+        [hint]="'form.phoneHint' | translate"
+        [error]="errorKey('phone') ? (errorKey('phone')! | translate) : null"
+      >
+        <input
+          class="input"
+          id="q-phone"
+          type="tel"
+          inputmode="tel"
+          formControlName="phone"
+          autocomplete="tel-national"
+          enterkeyhint="next"
+          placeholder="(313) 555-0142"
+          (blur)="formatPhoneField()"
+          [attr.aria-invalid]="!!errorKey('phone')"
+          [attr.aria-describedby]="fPhone.describedBy()"
+          required
+        />
+      </app-form-field>
+
+      <app-form-field #fZip fieldId="q-zip" [label]="'form.zip' | translate" [required]="true" [error]="errorKey('zip') ? (errorKey('zip')! | translate) : null">
+        <input
+          class="input"
+          id="q-zip"
+          type="text"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          maxlength="5"
+          formControlName="zip"
+          autocomplete="postal-code"
+          enterkeyhint="next"
+          placeholder="48126"
+          [attr.aria-invalid]="!!errorKey('zip')"
+          [attr.aria-describedby]="(fZip.describedBy() ?? '') + (outOfArea() ? ' q-zip-area' : '') || null"
+          required
+        />
+      </app-form-field>
+    </div>
+
+    @if (outOfArea()) {
+      <p class="notice" id="q-zip-area" role="status">
+        <app-icon name="home" />
+        {{ 'form.outOfArea' | translate }}
+      </p>
+    }
+
+    <app-form-field #fType fieldId="q-type" [label]="'form.type' | translate" [required]="true" [error]="errorKey('flooringType') ? (errorKey('flooringType')! | translate) : null">
+      <select
+        class="select"
+        id="q-type"
+        formControlName="flooringType"
+        [class.is-flash]="!!preselectedName()"
+        [attr.aria-invalid]="!!errorKey('flooringType')"
+        [attr.aria-describedby]="fType.describedBy()"
+        required
+      >
+        <option value="" disabled>{{ 'form.typePlaceholder' | translate }}</option>
+        @for (o of content.quoteOptions(); track o.id) {
+          <option [value]="o.id">{{ i18n.t(o.label) }}</option>
+        }
+        <option value="not-sure">{{ 'form.notSure' | translate }}</option>
+      </select>
+    </app-form-field>
+
+    <div class="form__row">
+      <app-form-field #fEmail fieldId="q-email" [label]="'form.email' | translate" [error]="errorKey('email') ? (errorKey('email')! | translate) : null">
+        <input
+          class="input"
+          id="q-email"
+          type="email"
+          inputmode="email"
+          formControlName="email"
+          autocomplete="email"
+          autocapitalize="off"
+          spellcheck="false"
+          enterkeyhint="next"
+          [attr.aria-invalid]="!!errorKey('email')"
+          [attr.aria-describedby]="fEmail.describedBy()"
+        />
+      </app-form-field>
+
+      <app-form-field
+        #fSqft
+        fieldId="q-sqft"
+        [label]="'form.sqft' | translate"
+        [hint]="'form.sqftHint' | translate"
+        [error]="errorKey('sqft') ? (errorKey('sqft')! | translate) : null"
+      >
+        <input
+          class="input"
+          id="q-sqft"
+          type="text"
+          inputmode="numeric"
+          formControlName="sqft"
+          autocomplete="off"
+          enterkeyhint="next"
+          placeholder="500"
+          [attr.aria-invalid]="!!errorKey('sqft')"
+          [attr.aria-describedby]="fSqft.describedBy()"
+        />
+      </app-form-field>
+    </div>
+
+    <div class="form__row">
+      <app-form-field #fDate fieldId="q-date" [label]="'form.date' | translate" [error]="errorKey('preferredDate') ? (errorKey('preferredDate')! | translate) : null">
+        <input
+          class="input"
+          id="q-date"
+          type="date"
+          formControlName="preferredDate"
+          [min]="today"
+          [attr.aria-invalid]="!!errorKey('preferredDate')"
+          [attr.aria-describedby]="fDate.describedBy()"
+        />
+      </app-form-field>
+
+      <app-form-field fieldId="q-time" [label]="'form.time' | translate">
+        <select class="select" id="q-time" formControlName="preferredTime">
+          <option value="">{{ 'form.timeAny' | translate }}</option>
+          @for (t of timeOptions; track t.value) {
+            <option [value]="t.value">{{ t.key | translate }}</option>
+          }
+        </select>
+      </app-form-field>
+    </div>
+
+    <app-form-field fieldId="q-comments" [label]="'form.comments' | translate">
+      <textarea
+        class="textarea"
+        id="q-comments"
+        formControlName="comments"
+        maxlength="1000"
+        rows="4"
+        [placeholder]="'form.commentsPlaceholder' | translate"
+      ></textarea>
+    </app-form-field>
+
+    <!-- Honeypot: hidden from people and screen readers -->
+    <div class="hp" aria-hidden="true">
+      <label for="q-company">Company</label>
+      <input id="q-company" formControlName="company" tabindex="-1" autocomplete="off" />
+    </div>
+
+    @if (submitted() && form.invalid) {
+      <p class="form__summary" role="alert">{{ 'form.errors.summary' | translate }}</p>
+    }
+    @if (sendError()) {
+      <p class="form__summary" role="alert">{{ 'form.errors.send' | translate }}</p>
+    }
+
+    <button type="submit" class="btn btn--primary btn--block btn--lg form__submit" [disabled]="sending()" [attr.aria-busy]="sending()">
+      @if (sending()) {
+        <span class="spinner" aria-hidden="true"></span>
+        {{ 'form.sending' | translate }}
+      } @else {
+        {{ 'form.submit' | translate }}
+        <app-icon name="arrow-right" />
+      }
+    </button>
+
+    <p class="form__consent">{{ 'form.consent' | translate }}</p>
+  </form>
+}
