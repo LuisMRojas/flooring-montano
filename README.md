@@ -104,7 +104,7 @@ Work is planned on a Trello board, one card per step:
 - [x] 15. EN/ES translation (ngx-translate)
 - [x] 16. Reusable components
 - [x] 17. Page sections
-- [ ] 18. Product / service detail panel
+- [x] 18. Product / service detail panel
 - [ ] 19. Quote form and contact buttons
 - [ ] 20. Breakpoint checks
 - [ ] 21. Accessibility
