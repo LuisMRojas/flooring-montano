@@ -1,0 +1,38 @@
+[
+  {
+    "id": "sarah-m",
+    "order": 1,
+    "visible": true,
+    "name": "Sarah M.",
+    "subject": { "kind": "product", "id": "hardwood" },
+    "rating": 5,
+    "text": {
+      "en": "They measured, quoted and installed our oak floors in two days. The house was spotless when they left.",
+      "es": "Midieron, cotizaron e instalaron nuestro piso de roble en dos días. La casa quedó impecable."
+    }
+  },
+  {
+    "id": "david-r",
+    "order": 2,
+    "visible": true,
+    "name": "David R.",
+    "subject": { "kind": "product", "id": "luxury-vinyl" },
+    "rating": 5,
+    "text": {
+      "en": "We needed a waterproof floor for the kitchen. The price was clear from day one, no surprises.",
+      "es": "Necesitábamos un piso resistente al agua para la cocina. El precio fue claro desde el primer día, sin sorpresas."
+    }
+  },
+  {
+    "id": "maria-tom-l",
+    "order": 3,
+    "visible": true,
+    "name": "Maria & Tom L.",
+    "subject": { "kind": "service", "id": "refinishing" },
+    "rating": 5,
+    "text": {
+      "en": "Our old floors look brand new. Friendly, on time and careful with our furniture.",
+      "es": "Nuestros pisos viejos parecen nuevos. Amables, puntuales y cuidadosos con los muebles."
+    }
+  }
+]

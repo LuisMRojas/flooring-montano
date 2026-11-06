@@ -1,0 +1,92 @@
+{
+  "hero": {
+    "eyebrow": { "en": "Family-owned · Dearborn, MI", "es": "Negocio familiar · Dearborn, MI" },
+    "title": { "en": "Floors that fit your home", "es": "Pisos a la medida de tu hogar" },
+    "subtitle": {
+      "en": "Hardwood, vinyl, laminate, tile and carpet. Installed by a local family team serving Dearborn, MI.",
+      "es": "Madera, vinilo, laminado, baldosa y alfombra. Instalados por un equipo familiar local en Dearborn, MI."
+    },
+    "image": {
+      "src": "images/hero/hero-living-room.jpg",
+      "alt": { "en": "Open living room and kitchen with warm hardwood floors", "es": "Sala y cocina abiertas con piso de madera cálido" },
+      "width": 1376,
+      "height": 768
+    },
+    "imageMobile": {
+      "src": "images/hero/hero-living-room-mobile.jpg",
+      "alt": { "en": "Open living room with warm hardwood floors", "es": "Sala abierta con piso de madera cálido" },
+      "width": 576,
+      "height": 768
+    },
+    "primaryCta": { "label": { "en": "Get a free estimate", "es": "Pide tu presupuesto gratis" }, "target": "contact" },
+    "secondaryCta": { "label": { "en": "See our flooring", "es": "Ver nuestros pisos" }, "target": "flooring" },
+    "trustBadges": [
+      { "en": "Free in-home estimate", "es": "Estimado gratis en tu casa" },
+      { "en": "Licensed & insured (sample)", "es": "Con licencia y seguro (ejemplo)" },
+      { "en": "Financing available (sample)", "es": "Financiamiento disponible (ejemplo)" }
+    ]
+  },
+  "whyUs": {
+    "points": [
+      {
+        "icon": "home",
+        "title": { "en": "Free in-home estimate", "es": "Estimado gratis en tu casa" },
+        "text": { "en": "We measure and quote at your place, at no cost.", "es": "Medimos y cotizamos en tu hogar, sin costo." }
+      },
+      {
+        "icon": "sparkle",
+        "title": { "en": "Clean, careful installation", "es": "Instalación limpia y cuidadosa" },
+        "text": { "en": "We protect your home and clean up every day.", "es": "Protegemos tu casa y limpiamos cada día." }
+      },
+      {
+        "icon": "tag",
+        "title": { "en": "Clear pricing", "es": "Precios claros" },
+        "text": { "en": "No surprises: you see the full quote before we start.", "es": "Sin sorpresas: ves la cotización completa antes de empezar." }
+      },
+      {
+        "icon": "family",
+        "title": { "en": "Family-run, local team", "es": "Equipo familiar y local" },
+        "text": { "en": "You talk to the people who do the work.", "es": "Hablas con quienes hacen el trabajo." }
+      }
+    ],
+    "stats": [
+      { "value": "15+", "label": { "en": "years of experience", "es": "años de experiencia" } },
+      { "value": "1,200+", "label": { "en": "floors installed", "es": "pisos instalados" } },
+      { "value": "4.9★", "label": { "en": "average rating", "es": "calificación promedio" } }
+    ],
+    "statsNote": { "en": "Sample figures for demonstration", "es": "Cifras de ejemplo para demostración" },
+    "financing": {
+      "text": { "en": "Flexible payment options available. Ask us at your free estimate.", "es": "Opciones de pago flexibles. Pregúntanos en tu estimado gratis." },
+      "cta": { "label": { "en": "Ask about financing", "es": "Consultar financiamiento" }, "target": "contact" }
+    }
+  },
+  "shopAtHome": {
+    "text": { "en": "Can't decide? We bring samples to your door.", "es": "¿No te decides? Te llevamos las muestras a tu casa." },
+    "cta": { "label": { "en": "Book a visit", "es": "Agendar visita" }, "target": "contact", "prefill": "estimate" }
+  },
+  "reviews": {
+    "note": { "en": "Sample reviews for demonstration", "es": "Reseñas de ejemplo para demostración" },
+    "averageRating": 4.9
+  },
+  "about": {
+    "title": { "en": "Meet the Montano family", "es": "Conoce a la familia Montano" },
+    "body": {
+      "en": "Montano Flooring is a family business serving homeowners in Dearborn and nearby communities. We started with one truck and a simple idea: do the job right and treat every home like our own. Today our team installs and refinishes floors for homes across the area.",
+      "es": "Montano Flooring es un negocio familiar que atiende a las familias de Dearborn y comunidades cercanas. Empezamos con una camioneta y una idea simple: hacer bien el trabajo y tratar cada casa como si fuera nuestra. Hoy nuestro equipo instala y renueva pisos en hogares de toda la zona."
+    },
+    "image": {
+      "src": "images/about/about-team.jpg",
+      "alt": { "en": "Our flooring installers measuring and laying tile", "es": "Nuestro equipo de instaladores colocando baldosa" },
+      "width": 1060,
+      "height": 795
+    },
+    "brandsLine": {
+      "en": "Quality materials from trusted manufacturers (sample)",
+      "es": "Materiales de calidad de fabricantes de confianza (ejemplo)"
+    },
+    "cta": { "label": { "en": "Contact us", "es": "Contáctanos" }, "target": "contact" }
+  },
+  "faq": {
+    "closingCta": { "label": { "en": "Still have a question?", "es": "¿Aún tienes dudas?" }, "target": "contact" }
+  }
+}

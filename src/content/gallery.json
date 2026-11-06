@@ -1,0 +1,102 @@
+[
+  {
+    "id": "hallway",
+    "order": 1,
+    "visible": true,
+    "orientation": "portrait",
+    "image": {
+      "src": "images/gallery/gallery-01-hallway.jpg",
+      "alt": { "en": "Hallway with slate tile, carpeted bedroom and herringbone wood", "es": "Pasillo con baldosa pizarra, dormitorio alfombrado y madera en espiga" },
+      "width": 768,
+      "height": 1376
+    }
+  },
+  {
+    "id": "bathroom-tile",
+    "order": 2,
+    "visible": true,
+    "replace": true,
+    "orientation": "landscape",
+    "image": {
+      "src": "images/gallery/gallery-02-bathroom-tile.jpg",
+      "alt": { "en": "Bathroom with large gray tile and wood mosaic", "es": "Baño con baldosa gris grande y mosaico de madera" },
+      "width": 1376,
+      "height": 768
+    }
+  },
+  {
+    "id": "stairs-top",
+    "order": 3,
+    "visible": true,
+    "orientation": "portrait",
+    "image": {
+      "src": "images/gallery/gallery-03-stairs-top.jpg",
+      "alt": { "en": "Wood staircase seen from above", "es": "Escalera de madera vista desde arriba" },
+      "width": 768,
+      "height": 1376
+    }
+  },
+  {
+    "id": "living-tile",
+    "order": 4,
+    "visible": true,
+    "orientation": "landscape",
+    "image": {
+      "src": "images/gallery/gallery-04-living-tile.jpg",
+      "alt": { "en": "Living room with gray tile and dark wood platform", "es": "Sala con baldosa gris y tarima de madera oscura" },
+      "width": 1376,
+      "height": 768
+    }
+  },
+  {
+    "id": "living-hardwood",
+    "order": 5,
+    "visible": true,
+    "replace": true,
+    "orientation": "landscape",
+    "image": {
+      "src": "images/gallery/gallery-05-living-hardwood.jpg",
+      "alt": { "en": "Open living room with hardwood floors", "es": "Sala abierta con piso de madera" },
+      "width": 1376,
+      "height": 768
+    }
+  },
+  {
+    "id": "stairs-front",
+    "order": 6,
+    "visible": true,
+    "orientation": "portrait",
+    "image": {
+      "src": "images/gallery/gallery-06-stairs-front.jpg",
+      "alt": { "en": "Open-tread wood staircase with glass railing", "es": "Escalera de peldaños de madera con baranda de vidrio" },
+      "width": 768,
+      "height": 1376
+    }
+  },
+  {
+    "id": "tile-transition",
+    "order": 7,
+    "visible": true,
+    "replace": true,
+    "orientation": "landscape",
+    "image": {
+      "src": "images/gallery/gallery-07-tile-transition.jpg",
+      "alt": { "en": "Transition between gray tile, mosaic and hardwood", "es": "Transición entre baldosa gris, mosaico y madera" },
+      "width": 1376,
+      "height": 768
+    }
+  },
+  {
+    "id": "bathroom-vertical",
+    "order": 8,
+    "visible": true,
+    "replace": true,
+    "orientation": "portrait",
+    "image": {
+      "src": "images/gallery/gallery-08-bathroom-vertical.jpg",
+      "alt": { "en": "Bathroom floor with gray tile and wood mosaic", "es": "Piso de baño con baldosa gris y mosaico de madera" },
+      "width": 768,
+      "height": 1376
+    }
+  }
+]

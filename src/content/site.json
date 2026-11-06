@@ -1,0 +1,49 @@
+{
+  "brand": {
+    "name": "Montano Flooring",
+    "legalName": "Montano Flooring LLC",
+    "logo": "brand/montano-flooring-logo.png",
+    "logoAlt": { "en": "Montano Flooring LLC logo", "es": "Logo de Montano Flooring LLC" }
+  },
+  "sections": [
+    { "id": "home", "order": 1, "visible": true, "inNav": false, "label": { "en": "Home", "es": "Inicio" } },
+    { "id": "flooring", "order": 2, "visible": true, "inNav": true, "requires": "products", "label": { "en": "Flooring", "es": "Pisos" } },
+    { "id": "services", "order": 3, "visible": true, "inNav": true, "requires": "services", "label": { "en": "Services", "es": "Servicios" } },
+    { "id": "why-us", "order": 4, "visible": true, "inNav": true, "label": { "en": "Why us", "es": "Por qué elegirnos" } },
+    { "id": "gallery", "order": 5, "visible": true, "inNav": true, "requires": "gallery", "label": { "en": "Gallery", "es": "Galería" } },
+    { "id": "reviews", "order": 6, "visible": true, "inNav": true, "requires": "testimonials", "label": { "en": "Reviews", "es": "Reseñas" } },
+    { "id": "about", "order": 7, "visible": true, "inNav": true, "label": { "en": "About", "es": "Nosotros" } },
+    { "id": "faq", "order": 8, "visible": true, "inNav": true, "requires": "faqs", "label": { "en": "FAQ", "es": "Preguntas" } },
+    { "id": "contact", "order": 9, "visible": true, "inNav": false, "label": { "en": "Contact", "es": "Contacto" } }
+  ],
+  "contact": {
+    "phoneDisplay": "(313) 555-0142",
+    "phoneE164": "+13135550142",
+    "serviceArea": { "en": "Serving Dearborn, MI & nearby areas", "es": "Atendemos Dearborn, MI y alrededores" },
+    "nearbyCities": ["Dearborn Heights", "Allen Park", "Detroit", "Livonia"],
+    "hours": [
+      { "days": { "en": "Mon – Fri", "es": "Lun – Vie" }, "time": { "en": "8:00 AM – 6:00 PM", "es": "8:00 – 18:00" } },
+      { "days": { "en": "Saturday", "es": "Sábado" }, "time": { "en": "9:00 AM – 2:00 PM", "es": "9:00 – 14:00" } },
+      { "days": { "en": "Sunday", "es": "Domingo" }, "time": { "en": "Closed", "es": "Cerrado" } }
+    ],
+    "social": []
+  },
+  "legal": [
+    {
+      "id": "privacy",
+      "title": { "en": "Privacy", "es": "Privacidad" },
+      "body": {
+        "en": "We collect your name, phone number, ZIP code and flooring type only to answer your estimate request. We never sell your information. To ask us to delete it, contact us using the form. (Sample text for demonstration.)",
+        "es": "Recopilamos tu nombre, teléfono, código postal y tipo de piso solo para responder tu solicitud de estimado. Nunca vendemos tu información. Para pedir que la eliminemos, contáctanos por el formulario. (Texto de ejemplo para demostración.)"
+      }
+    },
+    {
+      "id": "accessibility",
+      "title": { "en": "Accessibility", "es": "Accesibilidad" },
+      "body": {
+        "en": "We want everyone to be able to use this site. It works on phones, tablets and computers, supports keyboard navigation and uses readable text and strong color contrast. If something doesn't work for you, tell us and we'll fix it. (Sample text.)",
+        "es": "Queremos que todas las personas puedan usar este sitio. Funciona en celulares, tabletas y computadoras, admite navegación con teclado y usa texto legible y buen contraste. Si algo no te funciona, avísanos y lo corregimos. (Texto de ejemplo.)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+[
+  {
+    "id": "hardwood",
+    "order": 1,
+    "visible": true,
+    "name": { "en": "Hardwood", "es": "Madera" },
+    "shortDescription": {
+      "en": "Real oak and other woods with timeless warmth, refinishable for decades.",
+      "es": "Roble y otras maderas reales, cálidas y atemporales, que se pueden renovar por décadas."
+    },
+    "image": {
+      "src": "images/flooring/flooring-hardwood.jpg",
+      "alt": { "en": "Cutting oak hardwood planks", "es": "Corte de tablas de roble" },
+      "width": 1024,
+      "height": 1024
+    },
+    "benefits": [
+      { "en": "Refinishable many times", "es": "Se puede renovar muchas veces" },
+      { "en": "Adds home value", "es": "Aumenta el valor de tu casa" },
+      { "en": "Warm, natural look", "es": "Aspecto cálido y natural" }
+    ],
+    "idealFor": [
+      { "en": "Living room", "es": "Sala" },
+      { "en": "Dining room", "es": "Comedor" },
+      { "en": "Bedrooms", "es": "Dormitorios" }
+    ],
+    "priceRange": { "min": 6, "max": 12 },
+    "cta": { "label": { "en": "Get a quote", "es": "Pedir cotización" }, "target": "contact", "prefill": "hardwood" }
+  },
+  {
+    "id": "luxury-vinyl",
+    "order": 2,
+    "visible": true,
+    "name": { "en": "Luxury vinyl", "es": "Vinilo de lujo" },
+    "shortDescription": {
+      "en": "Waterproof and tough, in stone and wood looks. Great for busy homes.",
+      "es": "Resistente al agua y a los golpes, en aspectos de piedra y madera. Ideal para casas con mucho movimiento."
+    },
+    "image": {
+      "src": "images/flooring/flooring-vinyl.jpg",
+      "alt": { "en": "Installing stone-look vinyl flooring", "es": "Instalación de piso vinílico efecto piedra" },
+      "width": 1024,
+      "height": 1024
+    },
+    "benefits": [
+      { "en": "100% waterproof", "es": "100% resistente al agua" },
+      { "en": "Scratch and dent resistant", "es": "Resiste rayones y golpes" },
+      { "en": "Stone and wood looks", "es": "Aspectos de piedra y madera" }
+    ],
+    "idealFor": [
+      { "en": "Kitchen", "es": "Cocina" },
+      { "en": "Bathroom", "es": "Baño" },
+      { "en": "Basement", "es": "Sótano" }
+    ],
+    "priceRange": { "min": 3, "max": 7 },
+    "cta": { "label": { "en": "Get a quote", "es": "Pedir cotización" }, "target": "contact", "prefill": "luxury-vinyl" }
+  },
+  {
+    "id": "laminate",
+    "order": 3,
+    "visible": true,
+    "name": { "en": "Laminate", "es": "Laminado" },
+    "shortDescription": {
+      "en": "A budget-friendly wood look in natural and gray tones, easy to install and care for.",
+      "es": "Aspecto de madera a buen precio, en tonos naturales y grises, fácil de instalar y de cuidar."
+    },
+    "image": {
+      "src": "images/flooring/flooring-laminate.jpg",
+      "alt": { "en": "Click-lock laminate planks being fitted", "es": "Colocación de laminado con encastre" },
+      "width": 1024,
+      "height": 1024
+    },
+    "benefits": [
+      { "en": "Budget-friendly", "es": "Precio accesible" },
+      { "en": "Quick installation", "es": "Instalación rápida" },
+      { "en": "Scratch-resistant surface", "es": "Superficie resistente a rayones" }
+    ],
+    "idealFor": [
+      { "en": "Bedrooms", "es": "Dormitorios" },
+      { "en": "Office", "es": "Oficina" },
+      { "en": "Hallways", "es": "Pasillos" }
+    ],
+    "priceRange": { "min": 2, "max": 5 },
+    "cta": { "label": { "en": "Get a quote", "es": "Pedir cotización" }, "target": "contact", "prefill": "laminate" }
+  },
+  {
+    "id": "tile",
+    "order": 4,
+    "visible": true,
+    "name": { "en": "Tile", "es": "Baldosa" },
+    "shortDescription": {
+      "en": "Large-format porcelain tile that lasts for years and wipes clean in seconds.",
+      "es": "Baldosa porcelánica de gran formato, duradera y fácil de limpiar."
+    },
+    "image": {
+      "src": "images/flooring/flooring-tile.jpg",
+      "alt": { "en": "Setting large gray porcelain tile", "es": "Colocación de baldosa gris de gran formato" },
+      "width": 1024,
+      "height": 1024
+    },
+    "benefits": [
+      { "en": "Very durable", "es": "Muy duradera" },
+      { "en": "Easy to clean", "es": "Fácil de limpiar" },
+      { "en": "Many sizes and finishes", "es": "Muchos tamaños y acabados" }
+    ],
+    "idealFor": [
+      { "en": "Bathroom", "es": "Baño" },
+      { "en": "Kitchen", "es": "Cocina" },
+      { "en": "Entryway", "es": "Entrada" }
+    ],
+    "priceRange": { "min": 5, "max": 15 },
+    "cta": { "label": { "en": "Get a quote", "es": "Pedir cotización" }, "target": "contact", "prefill": "tile" }
+  },
+  {
+    "id": "carpet",
+    "order": 5,
+    "visible": true,
+    "name": { "en": "Carpet", "es": "Alfombra" },
+    "shortDescription": {
+      "en": "Soft, warm and quiet underfoot, in neutral colors and textures.",
+      "es": "Suave, cálida y silenciosa al pisar, en colores y texturas neutros."
+    },
+    "image": {
+      "src": "images/flooring/flooring-carpet.jpg",
+      "alt": { "en": "Trimming new carpet", "es": "Corte de alfombra nueva" },
+      "width": 1024,
+      "height": 1024
+    },
+    "benefits": [
+      { "en": "Soft and warm", "es": "Suave y cálida" },
+      { "en": "Quieter rooms", "es": "Ambientes más silenciosos" },
+      { "en": "Many colors and textures", "es": "Muchos colores y texturas" }
+    ],
+    "idealFor": [
+      { "en": "Bedrooms", "es": "Dormitorios" },
+      { "en": "Family room", "es": "Sala familiar" },
+      { "en": "Stairs", "es": "Escaleras" }
+    ],
+    "priceRange": { "min": 2, "max": 6 },
+    "cta": { "label": { "en": "Get a quote", "es": "Pedir cotización" }, "target": "contact", "prefill": "carpet" }
+  }
+]

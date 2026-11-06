@@ -1,0 +1,82 @@
+[
+  {
+    "id": "cost",
+    "order": 1,
+    "visible": true,
+    "question": { "en": "How much does flooring cost?", "es": "¿Cuánto cuesta un piso?" },
+    "answer": {
+      "en": "Price depends on the material, room size and prep work. Our free estimate gives you an exact quote.",
+      "es": "El precio depende del material, el tamaño y la preparación. Nuestro estimado gratis te da una cotización exacta."
+    }
+  },
+  {
+    "id": "installation-time",
+    "order": 2,
+    "visible": true,
+    "question": { "en": "How long does installation take?", "es": "¿Cuánto tarda la instalación?" },
+    "answer": {
+      "en": "Most rooms take 1 to 3 days. A whole home usually takes about a week.",
+      "es": "La mayoría de los ambientes toma de 1 a 3 días. Una casa completa, cerca de una semana."
+    }
+  },
+  {
+    "id": "measuring",
+    "order": 3,
+    "visible": true,
+    "question": { "en": "How do you measure my space?", "es": "¿Cómo miden mi espacio?" },
+    "answer": {
+      "en": "We visit, measure, check the subfloor and show samples. It's free and there's no obligation.",
+      "es": "Visitamos tu casa, medimos, revisamos el contrapiso y mostramos muestras. Es gratis y sin compromiso."
+    }
+  },
+  {
+    "id": "old-floor",
+    "order": 4,
+    "visible": true,
+    "question": { "en": "Do you remove my old floor?", "es": "¿Retiran mi piso viejo?" },
+    "answer": {
+      "en": "Yes. We remove and dispose of it, then prepare the surface.",
+      "es": "Sí. Lo retiramos, nos encargamos de desecharlo y preparamos la superficie."
+    }
+  },
+  {
+    "id": "kitchens-bathrooms",
+    "order": 5,
+    "visible": true,
+    "question": { "en": "Which floor is best for kitchens and bathrooms?", "es": "¿Qué piso es mejor para cocinas y baños?" },
+    "answer": {
+      "en": "Luxury vinyl and tile handle water best.",
+      "es": "El vinilo y la baldosa resisten mejor el agua."
+    }
+  },
+  {
+    "id": "warranty",
+    "order": 6,
+    "visible": true,
+    "question": { "en": "Is the work guaranteed?", "es": "¿El trabajo tiene garantía?" },
+    "answer": {
+      "en": "Yes. We back our installation with a workmanship warranty (sample: 1 year), plus the manufacturer's warranty.",
+      "es": "Sí. Garantizamos la instalación (ejemplo: 1 año), además de la garantía del fabricante."
+    }
+  },
+  {
+    "id": "care",
+    "order": 7,
+    "visible": true,
+    "question": { "en": "How do I care for my new floor?", "es": "¿Cómo cuido mi piso nuevo?" },
+    "answer": {
+      "en": "Sweep often and use a damp, not wet, mop. We leave you a simple care guide.",
+      "es": "Barre seguido y usa un trapeador húmedo, no mojado. Te dejamos una guía de cuidado."
+    }
+  },
+  {
+    "id": "financing",
+    "order": 8,
+    "visible": true,
+    "question": { "en": "Do you offer financing?", "es": "¿Tienen financiamiento?" },
+    "answer": {
+      "en": "We offer flexible payment options (sample). Ask us at your free estimate.",
+      "es": "Ofrecemos opciones de pago flexibles (ejemplo). Pregúntanos en tu estimado gratis."
+    }
+  }
+]
