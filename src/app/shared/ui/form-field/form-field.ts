@@ -55,7 +55,7 @@ import { TranslatePipe } from '@ngx-translate/core';
       margin: 0;
       min-height: 0;
       color: #b42318;
-      font-weight: 500;
+      font-weight: 600;
     }
     .field__error:empty {
       display: none;
