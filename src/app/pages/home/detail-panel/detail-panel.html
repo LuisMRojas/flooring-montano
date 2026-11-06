@@ -1,0 +1,88 @@
+@let it = item();
+<article class="detail" [attr.aria-labelledby]="'detail-title-' + it.id">
+  <figure class="detail__media">
+    @for (shown of [it]; track shown.id) {
+      <img
+        [src]="shown.image.src"
+        [alt]="i18n.t(shown.image.alt)"
+        [width]="shown.image.width"
+        [height]="shown.image.height"
+        decoding="async"
+      />
+    }
+  </figure>
+
+  <header class="detail__head">
+    <h2 [id]="'detail-title-' + it.id">{{ i18n.t(it.name) }}</h2>
+    @if (product(); as p) {
+      <p class="price">
+        <strong>{{ 'detail.priceRange' | translate: { min: p.priceRange.min, max: p.priceRange.max } }}</strong>
+        <span>{{ 'detail.priceUnit' | translate }}</span>
+      </p>
+    }
+  </header>
+
+  <p class="detail__lead">{{ i18n.t(it.shortDescription) }}</p>
+  @if (it.longDescription; as long) {
+    <p class="detail__text">{{ i18n.t(long) }}</p>
+  }
+
+  @if (product(); as p) {
+    <section class="block" aria-labelledby="detail-benefits">
+      <h3 id="detail-benefits">{{ 'detail.benefits' | translate }}</h3>
+      <ul class="ticks">
+        @for (b of p.benefits; track $index) {
+          <li><span class="ticks__icon"><app-icon name="check" /></span>{{ i18n.t(b) }}</li>
+        }
+      </ul>
+    </section>
+
+    <section class="block" aria-labelledby="detail-rooms">
+      <h3 id="detail-rooms">{{ 'detail.idealFor' | translate }}</h3>
+      <ul class="chips">
+        @for (room of p.idealFor; track $index) {
+          <li class="chip">{{ i18n.t(room) }}</li>
+        }
+      </ul>
+    </section>
+
+    <p class="note">{{ 'detail.priceNote' | translate }}</p>
+  }
+
+  @if (service(); as s) {
+    <section class="block" aria-labelledby="detail-steps">
+      <h3 id="detail-steps">{{ 'detail.howItWorks' | translate }}</h3>
+      <app-process-steps [steps]="s.steps" [compact]="true" />
+    </section>
+  }
+
+  @if (reviews().length) {
+    <section class="block" aria-labelledby="detail-reviews">
+      <h3 id="detail-reviews">{{ 'detail.reviews' | translate }}</h3>
+      @for (t of reviews(); track t.id) {
+        <app-testimonial-card class="review" [testimonial]="t" [subject]="content.subjectName(t)" />
+      }
+    </section>
+  }
+
+  @if (others().length) {
+    <nav class="block others" [attr.aria-label]="(product() ? 'detail.otherFloors' : 'detail.otherServices') | translate">
+      <h3>{{ (product() ? 'detail.otherFloors' : 'detail.otherServices') | translate }}</h3>
+      <ul>
+        @for (o of others(); track o.id) {
+          <li>
+            <button type="button" class="other" (click)="selectItem.emit(o)">
+              <img [src]="o.image.src" alt="" width="56" height="56" loading="lazy" decoding="async" />
+              <span>{{ i18n.t(o.name) }}</span>
+              <app-icon name="chevron-right" />
+            </button>
+          </li>
+        }
+      </ul>
+    </nav>
+  }
+
+  <div class="detail__cta">
+    <app-cta [cta]="cta()" variant="primary" [block]="true" [large]="true" [arrow]="true" (pressed)="quote.emit($event)" />
+  </div>
+</article>

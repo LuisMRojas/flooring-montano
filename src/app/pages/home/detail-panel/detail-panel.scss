@@ -1,0 +1,189 @@
+:host {
+  display: block;
+}
+
+.detail {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.detail__media {
+  margin: 0;
+  overflow: hidden;
+  border-radius: calc(var(--radius) + 4px);
+  background: var(--color-surface);
+
+  img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    animation: detail-in var(--duration-base) var(--ease-out) both;
+  }
+}
+
+@keyframes detail-in {
+  from {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.detail__head {
+  display: grid;
+  gap: var(--space-2);
+  // Leave room for the panel's close button on the right
+  padding-right: var(--space-8);
+
+  h2 {
+    margin: 0;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    color: var(--color-primary);
+  }
+}
+
+.price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin: 0;
+
+  strong {
+    font: 700 1.5rem var(--font-heading);
+    color: var(--color-accent-strong);
+  }
+
+  span {
+    color: var(--color-text-muted);
+  }
+}
+
+.detail__lead {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.detail__text {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.block {
+  display: grid;
+  gap: var(--space-3);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+
+  h3 {
+    margin: 0;
+    font-size: 0.875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent-strong);
+  }
+}
+
+.ticks {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-weight: 500;
+  }
+}
+
+.ticks__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: rgba(166, 110, 56, 0.14);
+  color: var(--color-accent-strong);
+  --icon-size: 1rem;
+}
+
+.note {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.review {
+  display: block;
+}
+
+.others ul {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.other {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: 64px;
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  color: var(--color-primary);
+  font: 600 1rem var(--font-body);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) ease,
+    background-color var(--duration-fast) ease;
+
+  img {
+    width: 48px;
+    height: 48px;
+    flex: none;
+    object-fit: cover;
+    border-radius: calc(var(--radius) - 2px);
+  }
+
+  span {
+    flex: 1;
+  }
+
+  app-icon {
+    color: var(--color-accent-strong);
+  }
+
+  &:active {
+    background: var(--color-surface);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--color-accent);
+    }
+  }
+}
+
+// Quote button stays visible at the bottom of the panel while scrolling
+.detail__cta {
+  position: sticky;
+  bottom: 0;
+  padding: var(--space-6) 0 var(--space-2);
+  background: linear-gradient(rgba(255, 255, 255, 0), var(--color-bg) 40%);
+}
