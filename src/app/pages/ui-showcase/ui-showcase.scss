@@ -1,0 +1,139 @@
+@use 'styles/tokens' as *;
+
+.showcase__intro {
+  padding: calc(var(--header-height) + var(--space-8)) 0 var(--space-8);
+  background: var(--color-primary);
+  color: #fff;
+
+  h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  p {
+    margin: 0;
+    max-width: 50ch;
+  }
+}
+
+.showcase__tag {
+  margin-bottom: var(--space-2) !important;
+  color: #e8c49f;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.block {
+  padding: var(--space-12) 0;
+
+  &--surface {
+    background: var(--color-surface);
+  }
+}
+
+.block__title {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+}
+
+.block__sub {
+  margin: var(--space-12) 0 var(--space-6);
+  color: var(--color-primary);
+}
+
+.container--narrow {
+  max-width: 760px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+
+  &--dark {
+    padding: var(--space-5);
+    border-radius: var(--radius);
+    background: var(--color-primary);
+  }
+}
+
+.note {
+  color: var(--color-text-muted);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-5);
+
+  @include from($bp-tablet) {
+    &--3 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @include from($bp-desktop) {
+    &--3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}
+
+.form {
+  display: grid;
+  gap: var(--space-5);
+}
+
+// Demo content of the detail panel
+.detail {
+  display: grid;
+  gap: var(--space-4);
+
+  h2 {
+    margin: 0;
+    padding-right: var(--space-12);
+    color: var(--color-primary);
+  }
+
+  h3 {
+    margin: var(--space-2) 0 0;
+    font-size: 1.125rem;
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+}
+
+.detail__img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.ticks {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  app-icon {
+    color: var(--color-accent-strong);
+  }
+}
+
+.detail__cta {
+  position: sticky;
+  bottom: 0;
+  padding-top: var(--space-4);
+  background: linear-gradient(transparent, var(--color-bg) 30%);
+}
