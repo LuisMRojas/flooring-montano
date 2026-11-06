@@ -1,5 +1,6 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Reveal } from '../../shared/reveal/reveal.directive';
 import { CONTACT, SECTIONS, UI } from '../../core/data/site.data';
 import { LanguageService } from '../../core/services/language.service';
 import { ScrollSpyService } from '../../core/services/scroll-spy.service';
@@ -10,7 +11,7 @@ import { ScrollSpyService } from '../../core/services/scroll-spy.service';
  */
 @Component({
   selector: 'app-home',
-  imports: [RouterLink],
+  imports: [RouterLink, Reveal],
   templateUrl: './home.html',
   styleUrl: './home.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
