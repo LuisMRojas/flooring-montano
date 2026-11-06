@@ -3,14 +3,15 @@ import { Service } from '../../../core/models/content.models';
 import { ContentService } from '../../../core/services/content.service';
 import { LanguageService } from '../../../core/services/language.service';
 import { Reveal } from '../../../shared/reveal/reveal.directive';
+import { CtaButton } from '../../../shared/ui/cta-button/cta-button';
 import { ProcessSteps } from '../../../shared/ui/process-steps/process-steps';
 import { ServiceCard } from '../../../shared/ui/service-card/service-card';
 import { SectionHeader } from '../../../shared/ui/section-header/section-header';
 
-/** #services: service cards, then the installation process in 4 steps. */
+/** #services: service cards, the installation process in 4 steps and the "shop at home" strip. */
 @Component({
   selector: 'app-services-section',
-  imports: [Reveal, ProcessSteps, ServiceCard, SectionHeader],
+  imports: [Reveal, CtaButton, ProcessSteps, ServiceCard, SectionHeader],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @let s = content.section('services')!;
@@ -31,6 +32,13 @@ import { SectionHeader } from '../../../shared/ui/section-header/section-header'
             <app-process-steps [steps]="p.steps" />
           </div>
         }
+
+        <!-- "Shop at home" strip (card 3: it belongs to Services) -->
+        @let shop = content.home().shopAtHome;
+        <div class="cta-strip" appReveal>
+          <p>{{ i18n.t(shop.text) }}</p>
+          <app-cta [cta]="shop.cta" variant="light" [arrow]="true" />
+        </div>
       </div>
     </section>
   `,

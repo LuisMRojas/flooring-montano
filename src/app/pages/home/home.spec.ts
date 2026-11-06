@@ -49,7 +49,8 @@ describe('Home page (card 17)', () => {
     const sections = Array.from(el.querySelectorAll('a[href="/#contact"]')).map(sectionOf);
     expect(sections).toContain('home');
     expect(sections).toContain('why-us'); // financing strip, mid-page
-    expect(sections).toContain('flooring'); // shop at home strip + product cards
+    expect(sections).toContain('flooring'); // product cards
+    expect(sections).toContain('services'); // service cards + shop at home strip
     expect(sections).toContain('faq'); // closing CTA
   });
 

@@ -1,16 +1,14 @@
 import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { Product } from '../../../core/models/content.models';
 import { ContentService } from '../../../core/services/content.service';
-import { LanguageService } from '../../../core/services/language.service';
 import { Reveal } from '../../../shared/reveal/reveal.directive';
-import { CtaButton } from '../../../shared/ui/cta-button/cta-button';
 import { ProductCard } from '../../../shared/ui/product-card/product-card';
 import { SectionHeader } from '../../../shared/ui/section-header/section-header';
 
-/** #flooring: product cards and the "shop at home" strip (mid-page CTA). */
+/** #flooring: product cards (each with Details + Get a quote). */
 @Component({
   selector: 'app-flooring-section',
-  imports: [Reveal, CtaButton, ProductCard, SectionHeader],
+  imports: [Reveal, ProductCard, SectionHeader],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @let s = content.section('flooring')!;
@@ -24,17 +22,11 @@ import { SectionHeader } from '../../../shared/ui/section-header/section-header'
             </li>
           }
         </ul>
-        @let shop = content.home().shopAtHome;
-        <div class="cta-strip" appReveal>
-          <p>{{ i18n.t(shop.text) }}</p>
-          <app-cta [cta]="shop.cta" variant="light" [arrow]="true" />
-        </div>
       </div>
     </section>
   `,
 })
 export class FlooringSection {
-  protected readonly i18n = inject(LanguageService);
   protected readonly content = inject(ContentService);
   readonly kicker = input<string>();
   readonly details = output<Product>();
