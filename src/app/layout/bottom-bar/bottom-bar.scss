@@ -10,6 +10,8 @@
 }
 
 .bar {
+  // Slides up once the hero has appeared.
+  animation: bar-in 0.6s var(--ease-out) 0.4s both;
   display: grid;
   grid-template-columns: 1fr 1.4fr;
   gap: var(--space-2);
@@ -57,5 +59,14 @@
 @include from($bp-desktop) {
   :host {
     display: none;
+  }
+}
+
+@keyframes bar-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
   }
 }
