@@ -10,7 +10,7 @@ import sharp from 'sharp';
 
 const PUBLIC = 'public';
 const SOURCES = ['images', 'brand'];
-const WIDTHS = [320, 480, 800, 1200, 1600];
+const WIDTHS = [320, 480, 640, 800, 1200, 1600];
 const QUALITY = 72;
 const MANIFEST = 'src/app/core/images/image-manifest.json';
 

@@ -17,7 +17,7 @@ import { Icon } from '../icon/icon';
       <div class="ui-card__media media">
         <img
           [attr.srcset]="s.image.src | srcset"
-          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, calc(100vw - 32px)"
           [src]="s.image.src"
           [alt]="i18n.t(s.image.alt)"
           [width]="s.image.width"

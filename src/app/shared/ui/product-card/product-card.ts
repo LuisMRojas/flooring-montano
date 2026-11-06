@@ -16,7 +16,7 @@ import { CtaButton } from '../cta-button/cta-button';
       <div class="ui-card__media media">
         <img
           [attr.srcset]="p.image.src | srcset"
-          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, calc(100vw - 32px)"
           [src]="p.image.src"
           [alt]="i18n.t(p.image.alt)"
           [width]="p.image.width"
