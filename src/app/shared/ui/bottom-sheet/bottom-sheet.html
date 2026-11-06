@@ -1,0 +1,37 @@
+<dialog
+  #dialog
+  class="sheet"
+  [class.is-closing]="closing()"
+  [attr.aria-label]="label()"
+  (close)="onClosed()"
+  (cancel)="onCancel($event)"
+  (click)="onBackdropClick($event)"
+>
+  <div
+    class="sheet__panel"
+    [class.is-dragging]="dragging()"
+    [style.transform]="dragY() ? 'translateY(' + dragY() + 'px)' : null"
+  >
+    <div
+      class="sheet__grab"
+      aria-hidden="true"
+      (pointerdown)="onDragStart($event)"
+      (pointermove)="onDragMove($event)"
+      (pointerup)="onDragEnd()"
+      (pointercancel)="onDragEnd()"
+    >
+      <span class="sheet__handle"></span>
+    </div>
+
+    <button type="button" class="icon-btn sheet__close" (click)="close()">
+      <app-icon name="close" />
+      <span class="visually-hidden">{{ 'sheet.close' | translate }}</span>
+    </button>
+
+    <div class="sheet__content">
+      @if (open()) {
+        <ng-content />
+      }
+    </div>
+  </div>
+</dialog>

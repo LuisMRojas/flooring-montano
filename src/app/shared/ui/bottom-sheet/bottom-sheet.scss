@@ -1,0 +1,145 @@
+@use 'styles/tokens' as *;
+
+// The <dialog> covers the screen (transparent); the panel sits inside it.
+// A click on the dialog itself = a click outside the panel = close.
+.sheet {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: hidden;
+
+  &[open] {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &::backdrop {
+    background: rgba(6, 16, 34, 0.55);
+    animation: fade-in var(--duration-base) ease both;
+  }
+
+  &.is-closing::backdrop {
+    animation: sheet-fade-out 0.26s ease both;
+  }
+}
+
+.sheet__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 92dvh;
+  border-radius: 20px 20px 0 0;
+  background: var(--color-bg);
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.25);
+  animation: sheet-up 0.38s var(--ease-out) both;
+  transition: transform 0.25s var(--ease-out);
+
+  &.is-dragging {
+    transition: none;
+  }
+
+  .is-closing & {
+    animation: sheet-down 0.26s ease-in both;
+  }
+}
+
+.sheet__grab {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-3) 0 var(--space-2);
+  cursor: grab;
+  touch-action: none;
+}
+
+.sheet__handle {
+  width: 44px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--color-border);
+}
+
+.sheet__close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 2;
+}
+
+.sheet__content {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-2) var(--space-5) calc(var(--space-8) + env(safe-area-inset-bottom));
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes sheet-down {
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes sheet-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+// Desktop: side panel from the right, full height, no drag handle.
+@include from($bp-desktop) {
+  .sheet[open] {
+    align-items: stretch;
+    justify-content: flex-end;
+  }
+
+  .sheet__panel {
+    width: min(520px, 92vw);
+    max-height: none;
+    height: 100%;
+    border-radius: 0;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.25);
+    animation-name: sheet-in-right;
+
+    .is-closing & {
+      animation-name: sheet-out-right;
+    }
+  }
+
+  .sheet__grab {
+    display: none;
+  }
+
+  .sheet__content {
+    padding: var(--space-12) var(--space-8) var(--space-8);
+  }
+
+  @keyframes sheet-in-right {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: none;
+    }
+  }
+
+  @keyframes sheet-out-right {
+    to {
+      transform: translateX(100%);
+    }
+  }
+}
