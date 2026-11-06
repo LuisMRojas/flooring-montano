@@ -1,0 +1,60 @@
+# Publishes the site to GitHub Pages on every push to main (Trello card 24).
+# Live at https://luismrojas.github.io/flooring-montano/
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time; a newer push replaces a queued one.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Test
+        run: npm test -- --watch=false
+
+      - name: Build (prerendered, served under /flooring-montano/)
+        run: npm run build:pages
+
+      - name: Pages extras
+        working-directory: dist/flooring-montano/browser
+        run: |
+          # Unknown paths render in the browser instead of GitHub's 404 page
+          cp index.csr.html 404.html
+          # Serve files as they are (no Jekyll processing)
+          touch .nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/flooring-montano/browser
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
