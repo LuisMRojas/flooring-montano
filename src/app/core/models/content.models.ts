@@ -80,7 +80,15 @@ export interface ContactInfo {
   serviceZips: string[];
   /** Optional street address; empty = not shown (decision on card 1). */
   address?: string;
-  hours: { days: LocalizedText; time: LocalizedText }[];
+  /** Main city and state, for search engines (structured data). */
+  mainCity: string;
+  region: string;
+  hours: {
+    days: LocalizedText;
+    time: LocalizedText;
+    /** Machine-readable version for search engines; omit for closed days. */
+    schema?: { dayOfWeek: string[]; opens: string; closes: string };
+  }[];
   social: { name: string; url: string }[];
 }
 
@@ -91,6 +99,8 @@ export interface LegalDoc {
 }
 
 export interface SiteContent {
+  /** Public address of the site (e.g. https://montanoflooring.com), set when publishing. Empty = unknown yet. */
+  url: string;
   brand: Brand;
   sections: Section[];
   contact: ContactInfo;

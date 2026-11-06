@@ -55,6 +55,7 @@ function published<T extends Orderable>(items: readonly T[]): T[] {
 export class ContentService {
   private readonly data = signal<ContentData>(DEFAULT_CONTENT);
 
+  readonly siteUrl = computed(() => this.data().site.url);
   readonly brand = computed(() => this.data().site.brand);
   readonly contact = computed(() => this.data().site.contact);
   readonly legal = computed(() => this.data().site.legal);

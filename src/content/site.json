@@ -1,4 +1,5 @@
 {
+  "url": "",
   "brand": {
     "name": "Montano Flooring",
     "legalName": "Montano Flooring LLC",
@@ -175,6 +176,17 @@
         "time": {
           "en": "8:00 AM – 6:00 PM",
           "es": "8:00 – 18:00"
+        },
+        "schema": {
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "18:00"
         }
       },
       {
@@ -185,6 +197,13 @@
         "time": {
           "en": "9:00 AM – 2:00 PM",
           "es": "9:00 – 14:00"
+        },
+        "schema": {
+          "dayOfWeek": [
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "14:00"
         }
       },
       {
@@ -213,7 +232,9 @@
       "48152",
       "48154",
       "482*"
-    ]
+    ],
+    "region": "MI",
+    "mainCity": "Dearborn"
   },
   "legal": [
     {

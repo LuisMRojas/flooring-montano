@@ -121,5 +121,10 @@
     "otherFloors": "Other floors",
     "otherServices": "Other services",
     "quoteFor": "Get a quote for {{name}}"
+  },
+  "seo": {
+    "title": "Flooring in Dearborn, MI | Montano Flooring",
+    "description": "Hardwood, luxury vinyl, laminate, tile and carpet installed by a local family team serving Dearborn, MI and nearby areas. Get a free in-home estimate.",
+    "locale": "en_US"
   }
 }

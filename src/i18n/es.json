@@ -121,5 +121,10 @@
     "otherFloors": "Otros pisos",
     "otherServices": "Otros servicios",
     "quoteFor": "Cotizar {{name}}"
+  },
+  "seo": {
+    "title": "Pisos en Dearborn, MI | Montano Flooring",
+    "description": "Madera, vinilo, laminado, baldosa y alfombra instalados por un equipo familiar local en Dearborn, MI y alrededores. Pide tu estimado gratis en casa.",
+    "locale": "es_US"
   }
 }
