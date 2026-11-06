@@ -3,7 +3,7 @@
 // Used to measure real performance locally:  npm run build && npm run serve:dist
 import { createReadStream, existsSync, statSync } from 'node:fs';
 import { createServer } from 'node:http';
-import { extname, join, normalize, resolve } from 'node:path';
+import { extname, join, normalize, resolve, sep } from 'node:path';
 import { createBrotliCompress, createGzip } from 'node:zlib';
 
 const root = resolve('dist/flooring-montano/browser');
@@ -35,10 +35,14 @@ createServer((req, res) => {
     return;
   }
   if (existsSync(file) && statSync(file).isDirectory()) file = join(file, 'index.html');
-  if (!existsSync(file)) file = join(root, 'index.html'); // SPA fallback
+  if (!existsSync(file)) {
+    // Prerendered routes have their own index.html; anything else is rendered in the browser.
+    const csr = join(root, 'index.csr.html');
+    file = existsSync(csr) ? csr : join(root, 'index.html');
+  }
 
   const ext = extname(file);
-  const hashed = /[-.][A-Za-z0-9]{8,}\.(js|css)$/.test(file) || file.includes(`${'media'}`);
+  const hashed = /[-.][A-Za-z0-9]{8,}\.(js|css)$/.test(file) || file.includes(`${sep}media${sep}`);
   const headers = {
     'Content-Type': types[ext] ?? 'application/octet-stream',
     'Cache-Control': ext === '.html' ? 'no-cache' : hashed ? 'public, max-age=31536000, immutable' : 'public, max-age=86400',

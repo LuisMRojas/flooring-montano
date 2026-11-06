@@ -1,4 +1,5 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideRouter, withInMemoryScrolling, withRouterConfig } from '@angular/router';
 import { provideTranslateLoader, provideTranslateService } from '@ngx-translate/core';
 import { routes } from './app.routes';
@@ -21,5 +22,8 @@ export const appConfig: ApplicationConfig = {
       fallbackLang: 'en',
       lang: 'en',
     }),
+    // Reuses the prerendered HTML instead of rebuilding it; clicks made before
+    // the app is ready are replayed.
+    provideClientHydration(withEventReplay()),
   ],
 };
