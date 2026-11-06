@@ -70,5 +70,17 @@
   },
   "reviews": {
     "average": "Average rating"
+  },
+  "detail": {
+    "priceRange": "${{min}} – ${{max}}",
+    "priceUnit": "per sq ft, installed",
+    "priceNote": "Sample price. Your free estimate gives you the exact cost.",
+    "idealFor": "Ideal for",
+    "benefits": "Why choose it",
+    "howItWorks": "How it works",
+    "reviews": "What customers say",
+    "otherFloors": "Other floors",
+    "otherServices": "Other services",
+    "quoteFor": "Get a quote for {{name}}"
   }
 }

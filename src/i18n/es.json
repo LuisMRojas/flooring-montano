@@ -70,5 +70,17 @@
   },
   "reviews": {
     "average": "Calificación promedio"
+  },
+  "detail": {
+    "priceRange": "${{min}} – ${{max}}",
+    "priceUnit": "por pie², instalado",
+    "priceNote": "Precio de ejemplo. Tu estimado gratis te da el costo exacto.",
+    "idealFor": "Ideal para",
+    "benefits": "Por qué elegirlo",
+    "howItWorks": "Cómo funciona",
+    "reviews": "Lo que dicen los clientes",
+    "otherFloors": "Otros pisos",
+    "otherServices": "Otros servicios",
+    "quoteFor": "Cotizar {{name}}"
   }
 }
