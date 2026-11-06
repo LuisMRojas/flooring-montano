@@ -16,6 +16,7 @@ Single-page, mobile-first website for **Montano Flooring LLC**, a (fictional) fa
 ```bash
 npm install
 npm start          # http://localhost:4200
+npm run start:phone  # same, reachable from a phone on your Wi-Fi: http://<your-PC-IP>:4300
 npm test           # unit tests (Vitest)
 npm run build      # production build in dist/
 ```
@@ -62,6 +63,20 @@ Every record in a list has `id`, `order` and `visible`:
 - A section whose list is empty (for example no reviews) disappears from the page and the menu.
 
 Buttons say where they go with `"target"` (a section id such as `"contact"`), and can preselect an option in the quote form with `"prefill"`. `npm test` checks that every text has both languages, ids are unique and every button points to a real section.
+
+## Screen sizes
+
+Mobile-first: phones are the base, larger screens add to it. Checked at 360, 375, 390, 768, 1024, 1200, 1440 and 1920 px wide, phone held sideways (740×360), and 200% zoom: no horizontal scrolling, nothing cut off, every tap target at least 48 px.
+
+| Width | Layout |
+| --- | --- |
+| < 768 | one column, hamburger menu, bottom bar (Call / Free Estimate), gallery you swipe |
+| 768–1023 | two-column cards and gallery, still hamburger + bottom bar |
+| 1024–1199 | three-column cards, no bottom bar, hamburger + Free Estimate button |
+| ≥ 1200 | horizontal menu |
+| phone sideways | smaller headline, buttons side by side, slimmer bottom bar, wide hero photo |
+
+To try it on a real phone: `npm run start:phone`, then open `http://<your-PC-IP>:4300` on a phone connected to the same Wi-Fi (Windows may ask to allow Node.js through the firewall).
 
 ## Components
 
@@ -110,7 +125,7 @@ Work is planned on a Trello board, one card per step:
 - [x] 17. Page sections
 - [x] 18. Product / service detail panel
 - [x] 19. Quote form and contact buttons
-- [ ] 20. Breakpoint checks
+- [x] 20. Breakpoint checks (real-phone test pending)
 - [ ] 21. Accessibility
 - [ ] 22. Local SEO and performance
 - [ ] 23. Final review
