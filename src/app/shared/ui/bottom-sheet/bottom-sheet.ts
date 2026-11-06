@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   DOCUMENT,
+  DestroyRef,
   ElementRef,
   effect,
   inject,
@@ -47,6 +48,10 @@ export class BottomSheet {
   private opener: HTMLElement | null = null;
 
   constructor() {
+    // If the panel is removed while open (e.g. a button inside navigates away),
+    // never leave the page scroll-locked.
+    inject(DestroyRef).onDestroy(() => this.document.body.classList.remove('no-scroll'));
+
     effect(() => {
       const dialog = this.dialog().nativeElement;
       if (this.open() && !dialog.open) {

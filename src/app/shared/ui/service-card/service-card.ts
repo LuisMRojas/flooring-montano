@@ -33,7 +33,7 @@ import { Icon } from '../icon/icon';
           <app-icon name="check" />
           {{ 'service.steps' | translate: { count: s.steps.length } }}
         </p>
-        <div class="ui-card__actions">
+        <div class="ui-card__actions actions">
           <button type="button" class="btn btn--outline" (click)="details.emit(s)">
             {{ 'service.details' | translate }}
           </button>
@@ -64,6 +64,10 @@ import { Icon } from '../icon/icon';
     }
     .desc {
       color: var(--color-text-muted);
+    }
+    // Service CTAs are longer ("Book a free estimate"): always stack the buttons.
+    .actions {
+      grid-template-columns: 1fr;
     }
     .steps {
       display: inline-flex;

@@ -1,7 +1,7 @@
 <div class="gallery" role="region" [attr.aria-label]="'gallery.label' | translate">
   <ul #track class="track" (scroll)="onTrackScroll()">
     @for (item of images(); track item.id; let i = $index) {
-      <li class="slide" [class.is-portrait]="item.orientation === 'portrait'">
+      <li class="slide">
         <button type="button" class="photo" (click)="open(i, $event)">
           <img
             [src]="item.image.src"

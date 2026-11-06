@@ -18,7 +18,7 @@ const SWIPE_MIN_PX = 50;
 /**
  * Photo gallery.
  * - Phones: horizontal strip you swipe (scroll-snap), with an "n of N" counter.
- * - From 768 px: grid where portrait photos take two rows.
+ * - From 768 px: even grid of tiles (2 columns, 4 from 1024 px).
  * - Tap a photo: full-screen viewer with swipe, arrows, keyboard (← → Esc).
  */
 @Component({
