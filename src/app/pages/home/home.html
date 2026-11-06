@@ -1,47 +1,63 @@
-@for (section of sections(); track section.id; let odd = $odd; let i = $index) {
-  @if (section.id === 'home') {
-    @let hero = home().hero;
-    <section id="home" class="section hero" aria-labelledby="home-title">
-      <picture>
-        <source media="(min-width: 768px)" [attr.srcset]="hero.image.src" />
-        <img
-          class="hero__img"
-          [src]="hero.imageMobile.src"
-          [alt]="i18n.t(hero.imageMobile.alt)"
-          [width]="hero.imageMobile.width"
-          [height]="hero.imageMobile.height"
-          fetchpriority="high"
-        />
-      </picture>
-      <div class="container hero__content">
-        <p class="hero__eyebrow">{{ i18n.t(hero.eyebrow) }}</p>
-        <h1 id="home-title">{{ i18n.t(hero.title) }}</h1>
-        <p class="hero__sub">{{ i18n.t(hero.subtitle) }}</p>
-        <div class="hero__actions">
-          <a class="btn btn--light" routerLink="/" [fragment]="hero.primaryCta.target">{{ i18n.t(hero.primaryCta.label) }}</a>
-          <a class="btn btn--outline-light" routerLink="/" [fragment]="hero.secondaryCta.target">{{
-            i18n.t(hero.secondaryCta.label)
-          }}</a>
-        </div>
-      </div>
-      <!-- Decorative: the secondary button already links to the next section. -->
-      <a class="hero__scroll" routerLink="/" [fragment]="hero.secondaryCta.target" aria-hidden="true" tabindex="-1">
-        {{ 'actions.scroll' | translate }}
-        <svg viewBox="0 0 24 24" focusable="false"><path d="M6 9l6 6 6-6" /></svg>
-      </a>
-    </section>
-  } @else {
-    <section [id]="section.id" class="section placeholder" [class.placeholder--alt]="odd" [attr.aria-labelledby]="section.id + '-title'">
-      <div class="container">
-        <p class="section-kicker" aria-hidden="true" appReveal>{{ kicker(i) }}</p>
-        <h2 [id]="section.id + '-title'" appReveal [revealDelay]="100">{{ i18n.t(section.label) }}</h2>
-        <p appReveal [revealDelay]="200">{{ 'placeholder.comingSoon' | translate }}</p>
-        @if (section.id === 'contact') {
-          <p appReveal [revealDelay]="300">
-            <strong>{{ i18n.t(contact().serviceArea) }}</strong> · {{ contact().nearbyCities.join(', ') }}
-          </p>
-        }
-      </div>
-    </section>
+@for (section of sections(); track section.id; let i = $index) {
+  @switch (section.id) {
+    @case ('home') {
+      <app-hero-section />
+    }
+    @case ('flooring') {
+      <app-flooring-section [kicker]="kicker(i)" (details)="showDetails($event)" />
+    }
+    @case ('services') {
+      <app-services-section [kicker]="kicker(i)" (details)="showDetails($event)" />
+    }
+    @case ('why-us') {
+      <app-why-us-section [kicker]="kicker(i)" />
+    }
+    @case ('gallery') {
+      <app-gallery-section [kicker]="kicker(i)" />
+    }
+    @case ('reviews') {
+      <app-reviews-section [kicker]="kicker(i)" />
+    }
+    @case ('about') {
+      <app-about-section [kicker]="kicker(i)" />
+    }
+    @case ('faq') {
+      <app-faq-section [kicker]="kicker(i)" />
+    }
+    @case ('contact') {
+      <app-contact-section [kicker]="kicker(i)" />
+    }
   }
 }
+
+<!-- Detail panel for products and services (refined in card 18) -->
+<app-bottom-sheet [(open)]="detailOpen" [label]="selected() ? i18n.t(selected()!.name) : ''">
+  @if (selected(); as item) {
+    <div class="detail">
+      <img
+        class="detail__img"
+        [src]="item.image.src"
+        [alt]="i18n.t(item.image.alt)"
+        [width]="item.image.width"
+        [height]="item.image.height"
+      />
+      <h2>{{ i18n.t(item.name) }}</h2>
+      <p>{{ i18n.t(item.shortDescription) }}</p>
+      @if (selectedProduct(); as p) {
+        <h3>{{ 'product.benefits' | translate }}</h3>
+        <ul class="ticks">
+          @for (b of p.benefits; track $index) {
+            <li><app-icon name="check" /> {{ i18n.t(b) }}</li>
+          }
+        </ul>
+      }
+      @if (selectedService(); as s) {
+        <h3>{{ 'service.details' | translate }}</h3>
+        <app-process-steps [steps]="s.steps" [compact]="true" />
+      }
+      <div class="detail__cta">
+        <app-cta [cta]="item.cta" variant="primary" [block]="true" [large]="true" (pressed)="detailOpen.set(false)" />
+      </div>
+    </div>
+  }
+</app-bottom-sheet>

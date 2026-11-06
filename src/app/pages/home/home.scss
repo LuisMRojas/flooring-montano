@@ -1,223 +1,53 @@
-@use 'styles/tokens' as *;
-
-.section {
-  // Keeps the heading visible under the fixed header after an anchor jump.
-  scroll-margin-top: var(--header-height);
-}
-
-// ---------- Hero ----------
-// Full screen behind the transparent header. On phones and tablets it stops
-// above the fixed bottom bar; from 1024 px it takes the whole viewport.
-.hero {
-  position: relative;
+// Detail panel content (layout refined in card 18)
+.detail {
   display: grid;
-  min-height: calc(100svh - var(--bottom-bar-height));
-  color: var(--color-on-primary);
-  overflow: hidden;
-  isolation: isolate;
-
-  @include from($bp-desktop) {
-    min-height: 100svh;
-  }
-}
-
-.hero__img {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  // Mobile crop anchored at the bottom so the floor stays in view (card 6).
-  object-position: center bottom;
-  // Slow settle-in zoom when the page opens.
-  animation: hero-zoom 2.4s var(--ease-out) both;
-}
-
-@keyframes hero-zoom {
-  from {
-    transform: scale(1.08);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(180deg, rgba(10, 25, 49, 0.45) 0%, rgba(10, 25, 49, 0.2) 35%, rgba(10, 25, 49, 0.9) 80%);
-
-  @include from($bp-desktop) {
-    background:
-      linear-gradient(90deg, rgba(10, 25, 49, 0.9) 0%, rgba(10, 25, 49, 0.55) 45%, rgba(10, 25, 49, 0.1) 75%),
-      linear-gradient(180deg, rgba(10, 25, 49, 0.5) 0%, rgba(10, 25, 49, 0) 25%);
-  }
-}
-
-.hero__content {
-  align-self: end;
-  padding-block: calc(var(--header-height) + var(--space-8)) var(--space-8);
-
-  @include from($bp-desktop) {
-    align-self: center;
-    padding-bottom: var(--space-12);
-  }
-
-  // Staggered entrance: eyebrow → title → text → buttons.
-  // Kept short (all in by ~0.9 s) so the headline doesn't delay LCP.
-  > * {
-    animation: fade-up 0.6s var(--ease-out) both;
-  }
-
-  > :nth-child(2) {
-    animation-delay: 0.1s;
-  }
-  > :nth-child(3) {
-    animation-delay: 0.2s;
-  }
-  > :nth-child(4) {
-    animation-delay: 0.3s;
-  }
-
-  h1 {
-    font-size: clamp(2.25rem, 9vw, 4.5rem);
-    letter-spacing: -0.01em;
-    max-width: 13ch;
-    margin-bottom: var(--space-5);
-    text-wrap: balance;
-  }
-}
-
-.hero__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin: 0 0 var(--space-4);
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #e8c49f;
-
-  &::before {
-    content: '';
-    width: 32px;
-    height: 2px;
-    background: var(--color-accent);
-  }
-}
-
-.hero__sub {
-  font-size: 1.125rem;
-  max-width: 38ch;
-  margin: 0 0 var(--space-8);
-  color: rgba(255, 255, 255, 0.92);
-
-  @include from($bp-desktop) {
-    font-size: 1.25rem;
-  }
-}
-
-.hero__actions {
-  display: grid;
-  gap: var(--space-3);
-
-  .btn {
-    min-height: 56px;
-    padding-inline: var(--space-6);
-  }
-
-  @include from($bp-tablet) {
-    display: flex;
-  }
-}
-
-// "Scroll" cue, desktop only: the one looping animation, kept slow and small.
-.hero__scroll {
-  display: none;
-
-  @include from($bp-desktop) {
-    position: absolute;
-    left: 50%;
-    bottom: var(--space-6);
-    display: grid;
-    justify-items: center;
-    gap: var(--space-1);
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transform: translateX(-50%);
-    animation: fade-in 0.8s 1s both;
-
-    svg {
-      width: 22px;
-      height: 22px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-      animation: nudge 2.2s ease-in-out 2s infinite;
-    }
-
-    &:hover {
-      color: #fff;
-    }
-  }
-}
-
-@keyframes nudge {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(6px);
-  }
-}
-
-// ---------- Placeholder sections (real content in card 17) ----------
-.placeholder {
-  min-height: 60vh;
-  padding-block: var(--space-12);
-
-  @include from($bp-desktop) {
-    padding-block: 6rem;
-  }
-
-  &--alt {
-    background: var(--color-surface);
-  }
+  gap: var(--space-4);
 
   h2 {
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin: 0;
+    padding-right: var(--space-12);
     color: var(--color-primary);
   }
 
+  h3 {
+    margin: var(--space-2) 0 0;
+    font-size: 1.125rem;
+  }
+
   p {
+    margin: 0;
     color: var(--color-text-muted);
   }
 }
 
-.section-kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin: 0 0 var(--space-3);
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-accent-strong);
+.detail__img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
 
-  &::before {
-    content: '';
-    width: 32px;
-    height: 2px;
-    background: var(--color-accent);
+.ticks {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
   }
+
+  app-icon {
+    color: var(--color-accent-strong);
+  }
+}
+
+.detail__cta {
+  position: sticky;
+  bottom: 0;
+  padding-top: var(--space-4);
+  background: linear-gradient(transparent, var(--color-bg) 30%);
 }
