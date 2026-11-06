@@ -101,6 +101,13 @@ export interface LegalDoc {
 export interface SiteContent {
   /** Public address of the site (e.g. https://montanoflooring.com), set when publishing. Empty = unknown yet. */
   url: string;
+  /** Outside services, switched on by filling in a value (empty = off). */
+  integrations: {
+    /** Form endpoint (e.g. https://formspree.io/f/xxxx). Empty = demo mode, nothing is sent. */
+    quoteEndpoint: string;
+    /** GoatCounter site code (xxxx in xxxx.goatcounter.com). Empty = no analytics. */
+    goatcounterCode: string;
+  };
   brand: Brand;
   sections: Section[];
   contact: ContactInfo;

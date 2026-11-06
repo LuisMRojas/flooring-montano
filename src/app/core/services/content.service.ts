@@ -56,6 +56,7 @@ export class ContentService {
   private readonly data = signal<ContentData>(DEFAULT_CONTENT);
 
   readonly siteUrl = computed(() => this.data().site.url);
+  readonly integrations = computed(() => this.data().site.integrations);
   readonly brand = computed(() => this.data().site.brand);
   readonly contact = computed(() => this.data().site.contact);
   readonly legal = computed(() => this.data().site.legal);

@@ -36,11 +36,24 @@ export class SeoService {
         this.setMeta('name', 'twitter:description', seo.description);
         this.setMeta('property', 'og:image', this.abs('images/hero/hero-living-room-1200.webp'));
         const url = this.content.siteUrl();
-        if (url) this.setMeta('property', 'og:url', url);
+        if (url) {
+          this.setMeta('property', 'og:url', url);
+          this.setCanonical(url);
+        }
         this.writeJsonLd(this.localBusiness(seo.description));
       },
       { injector: this.injector },
     );
+  }
+
+  private setCanonical(url: string): void {
+    let link = this.document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!link) {
+      link = this.document.createElement('link');
+      link.rel = 'canonical';
+      this.document.head.appendChild(link);
+    }
+    link.href = url;
   }
 
   private setMeta(attr: 'name' | 'property', key: string, value: string): void {

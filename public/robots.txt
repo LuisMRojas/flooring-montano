@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap: added when the site address is known (card 24)
+Sitemap: https://luismrojas.github.io/flooring-montano/sitemap.xml
