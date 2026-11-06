@@ -210,13 +210,24 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
-// Desktop: horizontal navbar, no hamburger
+// Desktop: Free Estimate button in the header (bottom bar is hidden from 1024 px)
 .nav-desktop,
 .header__cta {
   display: none;
 }
 
+.header__cta {
+  white-space: nowrap;
+}
+
 @include from($bp-desktop) {
+  .header__cta {
+    display: inline-flex;
+  }
+}
+
+// Wide desktop: horizontal navbar, no hamburger
+@include from($bp-nav) {
   .menu-btn,
   .mobile-menu {
     display: none;
@@ -267,10 +278,6 @@
         transform: scaleX(1);
       }
     }
-  }
-
-  .header__cta {
-    display: inline-flex;
   }
 }
 

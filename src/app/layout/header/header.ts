@@ -9,6 +9,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { BRAND, CONTACT, SECTIONS, UI } from '../../core/data/site.data';
 import { LanguageService } from '../../core/services/language.service';
@@ -43,6 +44,10 @@ export class Header {
   private readonly mobileMenu = viewChild.required<ElementRef<HTMLElement>>('mobileMenu');
 
   constructor() {
+    // Router anchor scrolling ignores CSS scroll-margin-top, so offset it by the sticky header.
+    const host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
+    inject(ViewportScroller).setOffset(() => [0, host.offsetHeight]);
+
     effect(() => {
       const open = this.menuOpen();
       this.document.body.classList.toggle('no-scroll', open);

@@ -3,6 +3,7 @@
 
 $bp-tablet: 768px;
 $bp-desktop: 1024px;
+$bp-nav: 1200px; // horizontal navbar (Spanish labels need the room)
 $bp-wide: 1440px;
 
 @mixin from($bp) {
