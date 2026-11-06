@@ -2,19 +2,39 @@
 
 .contact {
   display: grid;
+  grid-template-areas:
+    'head'
+    'form'
+    'actions'
+    'details';
   gap: var(--space-8);
 
   @include from($bp-desktop) {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 5rem;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      'head form'
+      'actions form'
+      'details form';
+    column-gap: 5rem;
+    row-gap: var(--space-8);
     align-items: start;
   }
 }
 
+.contact__head {
+  grid-area: head;
+  margin-bottom: 0;
+}
+
+.contact__form {
+  grid-area: form;
+}
+
 .contact__actions {
+  grid-area: actions;
   display: grid;
   gap: var(--space-3);
-  margin-bottom: var(--space-8);
 
   @include from($bp-tablet) {
     display: flex;
@@ -23,6 +43,7 @@
 }
 
 .contact__details {
+  grid-area: details;
   display: grid;
   gap: var(--space-6);
 
@@ -80,21 +101,24 @@
   }
 }
 
-// Slot for the quote form (card 19)
+// Quote form card (card 19)
 .contact__form {
-  padding: var(--space-8) var(--space-6);
+  padding: var(--space-6) var(--space-5);
   border-radius: calc(var(--radius) + 8px);
   background: var(--color-bg);
   color: var(--color-text);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 
-  h3 {
-    color: var(--color-primary);
-    font-size: 1.5rem;
+  @include from($bp-tablet) {
+    padding: var(--space-8);
   }
+}
 
-  p {
-    margin: 0;
-    color: var(--color-text-muted);
+// Reserves the form's height until it loads (no layout shift)
+.form-placeholder {
+  min-height: 52rem;
+
+  @include from($bp-tablet) {
+    min-height: 40rem;
   }
 }
