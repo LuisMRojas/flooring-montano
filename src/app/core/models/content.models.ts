@@ -72,6 +72,12 @@ export interface ContactInfo {
   email?: string;
   serviceArea: LocalizedText;
   nearbyCities: string[];
+  /**
+   * ZIP codes served (Dearborn, Dearborn Heights, Allen Park, Livonia...).
+   * A trailing * matches a prefix ("482*" = Detroit). Others get a friendly
+   * notice in the form, never a block.
+   */
+  serviceZips: string[];
   /** Optional street address; empty = not shown (decision on card 1). */
   address?: string;
   hours: { days: LocalizedText; time: LocalizedText }[];

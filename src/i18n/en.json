@@ -30,7 +30,47 @@
     "sample": "Sample website for demonstration"
   },
   "form": {
-    "optional": "optional"
+    "optional": "optional",
+    "name": "Full name",
+    "phone": "Phone",
+    "phoneHint": "We'll call or text you to schedule.",
+    "zip": "ZIP code",
+    "type": "Flooring type",
+    "typePlaceholder": "Choose one",
+    "notSure": "Not sure yet",
+    "email": "Email",
+    "sqft": "Approx. square feet",
+    "sqftHint": "A rough guess is fine.",
+    "date": "Preferred date",
+    "time": "Preferred time",
+    "timeAny": "Any time",
+    "timeMorning": "Morning (8–12)",
+    "timeAfternoon": "Afternoon (12–4)",
+    "timeLate": "Late afternoon (4–6)",
+    "comments": "Comments",
+    "commentsPlaceholder": "Rooms, current floor, anything we should know",
+    "submit": "Send my request",
+    "sending": "Sending…",
+    "consent": "By sending, you agree to be contacted about your estimate. We never share your information.",
+    "preselected": "Selected: {{name}}",
+    "outOfArea": "We mainly serve Dearborn and nearby areas. Send your request anyway and we'll confirm if we can reach you.",
+    "errors": {
+      "required": "This field is required.",
+      "name": "Please enter your name.",
+      "phone": "Enter a 10-digit phone number.",
+      "zip": "Enter a 5-digit ZIP code.",
+      "email": "Enter a valid email address.",
+      "sqft": "Enter a number between 1 and 100,000.",
+      "date": "Choose today or a later date.",
+      "summary": "Please check the highlighted fields.",
+      "send": "We couldn't send your request. Please try again or call us."
+    },
+    "success": {
+      "title": "Thanks, {{name}}!",
+      "text": "We received your request. We'll call or text you at {{phone}} to set up your free estimate.",
+      "demo": "This is a sample website: no request was actually sent.",
+      "again": "Send another request"
+    }
   },
   "product": {
     "details": "Details",
@@ -65,8 +105,7 @@
     "textUs": "Send a text",
     "area": "Service area",
     "hours": "Hours",
-    "formTitle": "Request your free estimate",
-    "formSoon": "The quote form arrives in the next step (Trello card 19)."
+    "formTitle": "Request your free estimate"
   },
   "reviews": {
     "average": "Average rating"

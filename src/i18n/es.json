@@ -30,7 +30,47 @@
     "sample": "Sitio de ejemplo para demostración"
   },
   "form": {
-    "optional": "opcional"
+    "optional": "opcional",
+    "name": "Nombre completo",
+    "phone": "Teléfono",
+    "phoneHint": "Te llamamos o escribimos para agendar.",
+    "zip": "Código postal (ZIP)",
+    "type": "Tipo de piso",
+    "typePlaceholder": "Elige uno",
+    "notSure": "Aún no sé",
+    "email": "Correo electrónico",
+    "sqft": "Pies cuadrados aproximados",
+    "sqftHint": "Un cálculo aproximado está bien.",
+    "date": "Fecha preferida",
+    "time": "Horario preferido",
+    "timeAny": "Cualquier horario",
+    "timeMorning": "Mañana (8–12)",
+    "timeAfternoon": "Tarde (12–4)",
+    "timeLate": "Última hora (4–6)",
+    "comments": "Comentarios",
+    "commentsPlaceholder": "Ambientes, piso actual, lo que debamos saber",
+    "submit": "Enviar mi solicitud",
+    "sending": "Enviando…",
+    "consent": "Al enviar, aceptas que te contactemos sobre tu estimado. Nunca compartimos tu información.",
+    "preselected": "Elegido: {{name}}",
+    "outOfArea": "Atendemos principalmente Dearborn y alrededores. Envía tu solicitud igual y te confirmamos si podemos llegar.",
+    "errors": {
+      "required": "Este campo es obligatorio.",
+      "name": "Escribe tu nombre.",
+      "phone": "Escribe un teléfono de 10 dígitos.",
+      "zip": "Escribe un código postal de 5 dígitos.",
+      "email": "Escribe un correo válido.",
+      "sqft": "Escribe un número entre 1 y 100,000.",
+      "date": "Elige hoy o una fecha posterior.",
+      "summary": "Revisa los campos marcados.",
+      "send": "No pudimos enviar tu solicitud. Intenta de nuevo o llámanos."
+    },
+    "success": {
+      "title": "¡Gracias, {{name}}!",
+      "text": "Recibimos tu solicitud. Te llamaremos o escribiremos al {{phone}} para agendar tu estimado gratis.",
+      "demo": "Este es un sitio de ejemplo: no se envió ninguna solicitud.",
+      "again": "Enviar otra solicitud"
+    }
   },
   "product": {
     "details": "Ver detalles",
@@ -65,8 +105,7 @@
     "textUs": "Envía un mensaje",
     "area": "Zona de servicio",
     "hours": "Horario",
-    "formTitle": "Solicita tu estimado gratis",
-    "formSoon": "El formulario de cotización llega en el siguiente paso (tarjeta 19 de Trello)."
+    "formTitle": "Solicita tu estimado gratis"
   },
   "reviews": {
     "average": "Calificación promedio"
