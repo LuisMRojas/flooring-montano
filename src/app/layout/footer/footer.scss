@@ -52,6 +52,7 @@
   a {
     display: inline-flex;
     align-items: center;
+    min-width: var(--tap-size);
     min-height: var(--tap-size);
     text-decoration: none;
 
