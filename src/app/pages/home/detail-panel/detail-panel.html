@@ -3,6 +3,8 @@
   <figure class="detail__media">
     @for (shown of [it]; track shown.id) {
       <img
+        [attr.srcset]="shown.image.src | srcset"
+        sizes="(min-width: 1024px) 456px, 100vw"
         [src]="shown.image.src"
         [alt]="i18n.t(shown.image.alt)"
         [width]="shown.image.width"
@@ -72,7 +74,7 @@
         @for (o of others(); track o.id) {
           <li>
             <button type="button" class="other" (click)="selectItem.emit(o)">
-              <img [src]="o.image.src" alt="" width="56" height="56" loading="lazy" decoding="async" />
+              <img [attr.srcset]="o.image.src | srcset" sizes="48px" [src]="o.image.src" alt="" width="56" height="56" loading="lazy" decoding="async" />
               <span>{{ i18n.t(o.name) }}</span>
               <app-icon name="chevron-right" />
             </button>

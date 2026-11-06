@@ -4,6 +4,8 @@
       <li class="slide">
         <button type="button" class="photo" (click)="open(i, $event)">
           <img
+            [attr.srcset]="item.image.src | srcset"
+            sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 82vw"
             [src]="item.image.src"
             [alt]="i18n.t(item.image.alt)"
             [width]="item.image.width"
@@ -52,6 +54,8 @@
       @for (shown of [item]; track shown.id) {
         <img
           class="viewer__img"
+          [attr.srcset]="shown.image.src | srcset"
+          sizes="100vw"
           [src]="shown.image.src"
           [alt]="i18n.t(shown.image.alt)"
           [width]="shown.image.width"

@@ -1,3 +1,4 @@
+import { SrcsetPipe } from '../../core/images/srcset.pipe';
 import { TranslatePipe } from '@ngx-translate/core';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -7,7 +8,7 @@ import { LegalDialog } from '../legal-dialog/legal-dialog';
 
 @Component({
   selector: 'app-footer',
-  imports: [TranslatePipe, RouterLink, LegalDialog],
+  imports: [SrcsetPipe, TranslatePipe, RouterLink, LegalDialog],
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

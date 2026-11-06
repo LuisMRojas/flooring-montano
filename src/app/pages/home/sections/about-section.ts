@@ -1,3 +1,4 @@
+import { SrcsetPipe } from '../../../core/images/srcset.pipe';
 import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { ContentService } from '../../../core/services/content.service';
 import { LanguageService } from '../../../core/services/language.service';
@@ -9,7 +10,7 @@ import { SectionHeader } from '../../../shared/ui/section-header/section-header'
 /** #about: team photo with a framed accent, family story, brands line, contact CTA. */
 @Component({
   selector: 'app-about-section',
-  imports: [Reveal, CtaButton, Icon, SectionHeader],
+  imports: [SrcsetPipe, Reveal, CtaButton, Icon, SectionHeader],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @let a = content.home().about;
@@ -17,6 +18,8 @@ import { SectionHeader } from '../../../shared/ui/section-header/section-header'
       <div class="container about">
         <figure class="about__media" appReveal>
           <img
+            [attr.srcset]="a.image.src | srcset"
+            sizes="(min-width: 1024px) 45vw, 100vw"
             [src]="a.image.src"
             [alt]="i18n.t(a.image.alt)"
             [width]="a.image.width"
@@ -24,7 +27,7 @@ import { SectionHeader } from '../../../shared/ui/section-header/section-header'
             loading="lazy"
             decoding="async"
           />
-          <img class="about__logo" [src]="content.brand().logo" alt="" width="96" height="96" loading="lazy" />
+          <img class="about__logo" [attr.srcset]="content.brand().logo | srcset" sizes="88px" [src]="content.brand().logo" alt="" width="96" height="96" loading="lazy" decoding="async" />
         </figure>
         <div class="about__text">
           <app-section-header titleId="about-title" [kicker]="kicker()" [title]="a.title" />

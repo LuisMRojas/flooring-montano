@@ -1,3 +1,4 @@
+import { SrcsetPipe } from '../../../core/images/srcset.pipe';
 import { ChangeDetectionStrategy, Component, ElementRef, computed, effect, inject, input, output } from '@angular/core';
 import { TranslatePipe, TranslationObject } from '@ngx-translate/core';
 import { TRANSLATIONS } from '../../../core/i18n/static-translate-loader';
@@ -38,7 +39,7 @@ function fill(pattern: string, params: Record<string, string>): string {
  */
 @Component({
   selector: 'app-detail-panel',
-  imports: [TranslatePipe, CtaButton, Icon, ProcessSteps, TestimonialCard],
+  imports: [SrcsetPipe, TranslatePipe, CtaButton, Icon, ProcessSteps, TestimonialCard],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './detail-panel.html',
   styleUrl: './detail-panel.scss',

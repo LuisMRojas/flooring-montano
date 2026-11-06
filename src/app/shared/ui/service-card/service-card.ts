@@ -1,3 +1,4 @@
+import { SrcsetPipe } from '../../../core/images/srcset.pipe';
 import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Service } from '../../../core/models/content.models';
@@ -8,13 +9,15 @@ import { Icon } from '../icon/icon';
 /** Service card: photo, number, name, short text, step count, "How it works" + CTA. */
 @Component({
   selector: 'app-service-card',
-  imports: [TranslatePipe, CtaButton, Icon],
+  imports: [SrcsetPipe, TranslatePipe, CtaButton, Icon],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @let s = service();
     <article class="ui-card" [attr.aria-labelledby]="'service-' + s.id">
       <div class="ui-card__media media">
         <img
+          [attr.srcset]="s.image.src | srcset"
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
           [src]="s.image.src"
           [alt]="i18n.t(s.image.alt)"
           [width]="s.image.width"

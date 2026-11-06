@@ -1,3 +1,4 @@
+import { SrcsetPipe } from '../../../core/images/srcset.pipe';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -9,15 +10,18 @@ import { Icon } from '../../../shared/ui/icon/icon';
 /** #home: full-screen photo, headline, both CTAs and trust badges. */
 @Component({
   selector: 'app-hero-section',
-  imports: [RouterLink, TranslatePipe, CtaButton, Icon],
+  imports: [SrcsetPipe, RouterLink, TranslatePipe, CtaButton, Icon],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @let hero = content.home().hero;
     <section id="home" class="hero" aria-labelledby="home-title">
       <picture>
+        <source media="(min-width: 768px), (orientation: landscape)" type="image/webp" [attr.srcset]="hero.image.src | srcset" sizes="100vw" />
         <source media="(min-width: 768px), (orientation: landscape)" [attr.srcset]="hero.image.src" />
         <img
           class="hero__img"
+          [attr.srcset]="hero.imageMobile.src | srcset"
+          sizes="100vw"
           [src]="hero.imageMobile.src"
           [alt]="i18n.t(hero.imageMobile.alt)"
           [width]="hero.imageMobile.width"

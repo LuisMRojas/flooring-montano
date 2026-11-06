@@ -8,6 +8,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
+import { SrcsetPipe } from '../../../core/images/srcset.pipe';
 import { TranslatePipe } from '@ngx-translate/core';
 import { GalleryImage } from '../../../core/models/content.models';
 import { LanguageService } from '../../../core/services/language.service';
@@ -23,7 +24,7 @@ const SWIPE_MIN_PX = 50;
  */
 @Component({
   selector: 'app-gallery',
-  imports: [TranslatePipe, Icon],
+  imports: [SrcsetPipe, TranslatePipe, Icon],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './gallery.html',
   styleUrl: './gallery.scss',

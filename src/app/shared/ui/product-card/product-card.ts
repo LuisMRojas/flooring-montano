@@ -1,3 +1,4 @@
+import { SrcsetPipe } from '../../../core/images/srcset.pipe';
 import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Product } from '../../../core/models/content.models';
@@ -7,13 +8,15 @@ import { CtaButton } from '../cta-button/cta-button';
 /** Flooring type card: photo, name, short text, sample price, ideal rooms, Details + quote. */
 @Component({
   selector: 'app-product-card',
-  imports: [TranslatePipe, CtaButton],
+  imports: [SrcsetPipe, TranslatePipe, CtaButton],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @let p = product();
     <article class="ui-card" [attr.aria-labelledby]="'product-' + p.id">
       <div class="ui-card__media media">
         <img
+          [attr.srcset]="p.image.src | srcset"
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
           [src]="p.image.src"
           [alt]="i18n.t(p.image.alt)"
           [width]="p.image.width"
