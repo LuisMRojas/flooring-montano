@@ -127,9 +127,26 @@ Live Lighthouse (mobile / desktop): performance 96 / 100, accessibility 100, bes
 
 To use your own domain later: add it in the repo's Settings → Pages, then update `url` in `src/content/site.json`, `public/sitemap.xml`, `public/robots.txt` and the `--base-href` in the `build:pages` script (`/` for a domain of its own).
 
-## Quote requests
+## Quote requests → WhatsApp
 
-Set `integrations.quoteEndpoint` in `src/content/site.json` to a form endpoint (for example a free [Formspree](https://formspree.io) form: `https://formspree.io/f/xxxxxxx`) and push. **Until it is set, the form runs in demo mode**: it validates and confirms, but nothing is sent, and the confirmation says so.
+Each quote request is sent to a small **Cloudflare Worker** (`worker/`), which accepts it only from the site, limits repeats (5 per minute per visitor), validates every field and sends the owner a **WhatsApp message** through [CallMeBot](https://www.callmebot.com). The CallMeBot key stays in Cloudflare secrets, never in the page.
+
+```
+form (GitHub Pages) ──POST JSON──▶ Cloudflare Worker ──▶ CallMeBot ──▶ WhatsApp
+```
+
+Until `integrations.quoteEndpoint` in `src/content/site.json` holds the Worker's URL, the form runs in **demo mode** (validates and confirms, sends nothing, and says so).
+
+One-time setup:
+
+1. **CallMeBot key**: follow the steps on callmebot.com (send their authorization message from your WhatsApp) and keep the key they reply with.
+2. **Cloudflare**: create a free account, then `npx wrangler login`.
+3. **Secrets** (you type them; they are never stored in the repo):
+   `npx wrangler secret put CALLMEBOT_PHONE --config worker/wrangler.toml` (your number with country code, e.g. `+13135550142`)
+   `npx wrangler secret put CALLMEBOT_APIKEY --config worker/wrangler.toml`
+4. `npm run worker:deploy`, then put the Worker URL in `integrations.quoteEndpoint` and push.
+
+`npm run worker:test` runs its tests (also on every push). CallMeBot is not an official WhatsApp service: fine for alerts to your own number. For messages from a business number, switch the Worker to Meta's WhatsApp Cloud API; the site doesn't change.
 
 ## Analytics
 

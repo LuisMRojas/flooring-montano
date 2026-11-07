@@ -12,7 +12,10 @@
     "start:prod": "ng serve --configuration production --port 4400",
     "audit:a11y": "lighthouse http://localhost:4400/ --only-categories=accessibility --view",
     "images": "node scripts/optimize-images.mjs",
-    "serve:dist": "node scripts/serve-dist.mjs"
+    "serve:dist": "node scripts/serve-dist.mjs",
+    "worker:test": "vitest run --config worker/vitest.config.mts",
+    "worker:dev": "wrangler dev --config worker/wrangler.toml",
+    "worker:deploy": "wrangler deploy --config worker/wrangler.toml"
   },
   "private": true,
   "packageManager": "npm@11.19.0",
@@ -40,6 +43,7 @@
     "prettier": "^3.8.1",
     "sharp": "^0.34.5",
     "typescript": "~6.0.2",
-    "vitest": "^5.0.0"
+    "vitest": "^5.0.0",
+    "wrangler": "^4.158.0"
   }
 }

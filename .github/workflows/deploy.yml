@@ -34,6 +34,9 @@ jobs:
       - name: Test
         run: npm test -- --watch=false
 
+      - name: Test the WhatsApp Worker
+        run: npm run worker:test
+
       - name: Build (prerendered, served under /flooring-montano/)
         run: npm run build:pages
 

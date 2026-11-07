@@ -45,3 +45,8 @@ Thumbs.db
 
 # Local Claude Code preview config
 .claude/
+
+# Cloudflare Wrangler local state
+.wrangler/
+worker/.wrangler/
+.dev.vars
