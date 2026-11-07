@@ -161,7 +161,7 @@ Work is planned on a Trello board, one card per step:
 - [x] 17. Page sections
 - [x] 18. Product / service detail panel
 - [x] 19. Quote form and contact buttons
-- [x] 20. Breakpoint checks (real-phone test pending)
+- [x] 20. Breakpoint checks (confirmed on a real iPhone and Android)
 - [x] 21. Accessibility (Lighthouse 100)
 - [x] 22. Local SEO and performance
 - [x] 23. Final review
