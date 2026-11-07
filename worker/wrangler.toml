@@ -1,0 +1,22 @@
+# Cloudflare Worker that turns quote requests into WhatsApp messages (card 29).
+# Deploy: npm run worker:deploy   ·   Local: npm run worker:dev
+name = "montano-quotes"
+main = "src/index.ts"
+compatibility_date = "2026-11-01"
+
+[vars]
+# Only the published site (and local development) may post quote requests.
+ALLOWED_ORIGINS = "https://luismrojas.github.io,http://localhost:4200,http://localhost:4500"
+
+# Anti-spam: at most 5 requests per minute from the same IP address.
+[[ratelimits]]
+name = "QUOTE_LIMITER"
+namespace_id = "1001"
+
+  [ratelimits.simple]
+  limit = 5
+  period = 60
+
+# Secrets (set once, never stored in the repo):
+#   npx wrangler secret put CALLMEBOT_PHONE --config worker/wrangler.toml
+#   npx wrangler secret put CALLMEBOT_APIKEY --config worker/wrangler.toml
