@@ -9,6 +9,8 @@ export interface QuoteRequest {
   zip: string;
   /** Product or service id, or "not-sure". */
   flooringType: string;
+  /** Its English name, so the WhatsApp alert reads "Tile" rather than an id. */
+  flooringLabel?: string;
   email?: string;
   sqft?: number;
   preferredDate?: string;

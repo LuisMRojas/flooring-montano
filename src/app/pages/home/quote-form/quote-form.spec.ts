@@ -119,6 +119,7 @@ describe('QuoteForm (card 19)', () => {
       phone: '(313) 555-0142',
       zip: '48126',
       flooringType: 'hardwood',
+      flooringLabel: 'Hardwood',
       sqft: 1200,
       inServiceArea: true,
       language: 'en',

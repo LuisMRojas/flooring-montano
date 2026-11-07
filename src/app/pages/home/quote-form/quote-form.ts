@@ -158,6 +158,7 @@ export class QuoteForm {
       phone: formatPhone(v.phone),
       zip: v.zip.trim(),
       flooringType: v.flooringType,
+      flooringLabel: this.content.quoteOptions().find((o) => o.id === v.flooringType)?.label.en,
       email: v.email.trim() || undefined,
       sqft: v.sqft ? Number(String(v.sqft).replace(/,/g, '')) : undefined,
       preferredDate: v.preferredDate || undefined,
