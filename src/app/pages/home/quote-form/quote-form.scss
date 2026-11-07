@@ -6,6 +6,8 @@
 
 .form {
   display: grid;
+  // minmax(0, …) lets fields shrink to the card width (iOS date inputs refuse to otherwise)
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-5);
 }
 
@@ -17,10 +19,11 @@
 
 .form__row {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-5);
 
   @include from($bp-tablet) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: start;
   }
 }
@@ -28,7 +31,7 @@
 // The desktop contact column is narrow: keep pairs stacked between 1024 and 1200 px.
 @media (min-width: $bp-desktop) and (max-width: 1199px) {
   .form__row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 

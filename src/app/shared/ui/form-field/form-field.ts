@@ -33,6 +33,8 @@ import { TranslatePipe } from '@ngx-translate/core';
   styles: `
     :host {
       display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      min-width: 0;
       gap: var(--space-2);
     }
     .field__label {
